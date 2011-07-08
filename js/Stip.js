@@ -1,8 +1,185 @@
-// JavaScript Document
-;;(function(g,i){var e={$:function(a){return document.getElementById(a)},gt:function(a,b){return a.getElementsByTagName(b)},db:document.body,dd:document.documentElement,i:0,mix:function(a,b){for(var d in b)a[d]=b[d];return a},html:'<div class="lj-tipsWrap lj-<%=kind%>" id="tipsWrap-<%=r%>"><div class="lj-content"></div><span class="lj-in lj-<%=p%>"><span class="lj-in lj-span"></span></span><a href="javascript:void(0)" id="ljClose<%=r%>" class="lj-close">x</a></div>'},j={prefix:"JunLu",p:"right",kind:"correct",
-closeP:"ljClose",wrapP:"tipsWrap-",closeBtn:false,time:null,offset:null,content:function(){return"Hello World"},of:15,rand:0},h=function(a){if(!(this instanceof h))return new h(a);this.elem=a?typeof a=="string"?e.$(a):a:this;this.defaultConfig=e.mix({},j);this._config={};this.func=this.clearTime=null;e.db!==document.body&&this._init()};h.prototype={show:function(a){var b=this,d=b._config,c,f;c=Object.prototype.toString.call(a);f=b.defaultConfig.content;if(!a||a&&!a.content)a=e.mix(a||{},{content:typeof f==
-"function"?f.call(b.elem,b.elem):f});if(/String|Number/.test(c))a={content:a};if("[object Function]"==c)a={content:a.call(b.elem,b.elem)};e.mix(d,b.defaultConfig);e.mix(d,a);b._updateInfo();b.id&&b.hide();a=b._append();e.gt(a,"DIV")[0].innerHTML=d.content;c=b._pos.call(b,d.p,a.offsetWidth,a.offsetHeight);f=b._getScroll();a.style.top=c.top+f.top+"px";a.style.left=c.left+f.left+"px";b._winSizeCheck(a);if(d.time)b.clearTime=setTimeout(function(){b.hide(void 0)},d.time);return false},hide:function(){this.clearTime&&
-clearTimeout(this.clearTime);this._clear(e.$(this.id))},_init:function(){e.mix(e,{dd:document.body,db:document.documentElement})},_clear:function(a){a&&a.parentNode&&a.parentNode.removeChild(a);g.detachEvent?g.detachEvent("onresize",this.func):g.removeEventListener("resize",this.func,false)},_updateInfo:function(){var a=this.elem,b=this._config;b.width=a.offsetWidth;b.height=a.offsetHeight;b.offset=a.getBoundingClientRect()},_append:function(){var a=this,b=a._config,d,c;d=b.rand=++e.i;c=document.createElement("DIV");
-c.id=b.prefix+d;a.id=c.id;c.innerHTML=e.html.replace("<%=p%>",b.p).replace(/<%=r%>/g,d).replace("<%=kind%>",b.kind);document.body.appendChild(c);if(b.closeBtn)e.$(b.closeP+d).onclick=function(){a.hide()};else e.$(b.closeP+d).style.display="none";return e.$(b.wrapP+d)},_pos:function(a,b,d){var c=this._config;return{left:function(f){return{top:c.offset.top,left:c.offset.left-f-c.of}},top:function(f,k){return{top:c.offset.top-k-c.of,left:c.offset.left}},right:function(){return{top:c.offset.top,left:c.offset.left+
-c.width+c.of}},bottom:function(){return{top:c.offset.top+c.height+c.of,left:c.offset.left}}}[a](b,d)},_getScroll:function(){return{top:e.db.scrollTop+e.dd.scrollTop,left:e.db.scrollLeft+e.dd.scrollLeft}},_winSizeCheck:function(a){var b=this,d=b._config;b.func=function(){b._updateInfo();var c=b._pos.call(b,d.p,a.offsetWidth,a.offsetHeight),f=b._getScroll();a.style.top=c.top+f.top+"px";a.style.left=c.left+f.left+"px"};g.attachEvent?g.attachEvent("onresize",b.func):g.addEventListener("resize",b.func,
-false)}};g[i]=h;g[i].config=j})(window,"Stip");
+/**
+ * Stip JavaScript v3.0
+ * http://www.cnblogs.com/idche/
+ * 
+ * 2011/01/21 14:39 by lujun
+ * 2011/02/23 13:48 修正了opera的一个事件绑定错误
+ */
+;;(function(win, namespace, undef){
+	var D = {
+		$:function(id){return document.getElementById(id);},
+		gt:function(parent, nodeName){return  parent.getElementsByTagName(nodeName);},
+		db:document.body,
+		dd:document.documentElement,
+		i:0, // 最外层DOM id 元素开始数
+		mix:function(r, s, a){
+			for(var i in s){
+				r[i] = s[i];
+			}
+			return r;
+		},
+		html:"<div class=\"lj-tipsWrap lj-<%=kind%>\" id=\"tipsWrap-<%=r%>\">\
+						<div class=\"lj-content\"></div>\
+						<span class=\"lj-in lj-<%=p%>\"><span class=\"lj-in lj-span\"></span></span>\
+						<a href=\"javascript:void(0)\" id=\"ljClose<%=r%>\" class=\"lj-close\">x</a>\
+					</div>"
+	}
+	
+	/* 可配置参数 */
+	var defaultConfig = {
+		prefix: 'JunLu', // 最外层DOM元素ID前缀
+		p: 'right', // 默认方向
+		kind: 'correct', // 类型 correct or error
+		closeP: 'ljClose', // 关闭按钮前缀
+		wrapP: 'tipsWrap-', //
+		closeBtn: false, // 默认是否有关闭按钮
+		time:null, // 默认显示时间 一直显示
+		offset: null,
+		content:function(){ return "Hello World";},//默认内容
+		of: 15,
+		rand: 0
+	}
+	/* 可配置参数 end */
+	
+	var TIP = function(id){
+		if( !(this instanceof TIP)){
+			return new TIP(id);
+		}		
+		this.elem = id ? typeof id == "string" ? D.$(id) : id : this;
+		this.defaultConfig = D.mix({}, defaultConfig);
+		this._config = {};
+		this.clearTime = null;
+		this.func = null;
+		(D.db !== document.body) && this._init(); // 防止 D.db 对象加载失败
+	}
+	
+	TIP.prototype = {
+		// 显示
+		show:function(json){
+			
+			var self = this, config = self._config,
+				wrap, p, c, sp, type = Object.prototype.toString.call(json),
+				content = self.defaultConfig.content;
+			
+			// 不传递参数 和不传递 .content 参数
+			if( !json || (json && !json.content) ){
+				json = D.mix(json || {}, {content: typeof content == "function" ? content.call(self.elem, self.elem) : content})
+			}
+			
+			// 参数为 String 或者 Number
+		    if(/String|Number/.test(type)){
+				json = {content:json};
+			}
+			
+			//参数为一个function
+			if("[object Function]" == type){
+				json = {content:json.call(self.elem, self.elem)};
+			}
+			
+			D.mix(config, self.defaultConfig); // 调用默认参数配置
+			D.mix(config, json); // 覆盖默认参数配置
+	
+			self._updateInfo();
+			self.id && self.hide()
+			
+			wrap = self._append();
+			
+			D.gt(wrap, "DIV")[0].innerHTML = config.content ;
+			p 	= self._pos.call(self, config.p, wrap.offsetWidth, wrap.offsetHeight);
+			sp	= self._getScroll();
+
+
+			wrap.style.top = p.top + sp.top + "px";
+			wrap.style.left = p.left + sp.left + "px";
+			
+			self._winSizeCheck(wrap);
+			if(config.time){
+				self.clearTime = setTimeout(function(){self.hide(c)}, config.time);
+			}
+			return false;
+		},
+		// 隐藏Stip
+		hide:function(){
+			var self = this
+			self.clearTime && clearTimeout(self.clearTime);
+			self._clear(D.$(self.id));
+		},
+		
+		_init:function(){
+			D.mix(D,{dd:document.body, db:document.documentElement});
+		},
+		_clear:function(a){
+			var config = this._config;
+			a && a.parentNode && a.parentNode.removeChild(a);
+			win.removeEventListener ? win.removeEventListener('resize', this.func, false) : win.detachEvent('onresize', this.func);
+		},
+		
+		// 更新位置大小信息
+		_updateInfo:function(){
+			var self = this, elem = self.elem, config = self._config;
+			config.width	= elem.offsetWidth;
+			config.height	= elem.offsetHeight;
+			config.offset	= elem.getBoundingClientRect();
+		},
+		
+		// 内部方法
+		_append:function(){
+			var self = this , config = self._config,
+				r, x;
+				
+			r = config.rand = ++D.i
+			x = document.createElement("DIV");
+			x.id = config.prefix + r;
+			self.id = x.id;
+			
+			x.innerHTML = D.html.replace("<%=p%>",config.p).replace(/<%=r%>/g, r).replace("<%=kind%>", config.kind);
+			document.body.appendChild(x);
+			
+			if(config.closeBtn){ // 有关闭按钮
+				var hide = function(){self.hide();}
+				D.$(config.closeP + r).onclick = hide;
+			}else{
+				D.$(config.closeP + r).style.display = "none";
+			}
+			
+			return D.$(config.wrapP + r);
+		},
+		// 内部方法
+		_pos:function(p,w,h){
+				var self = this, C = self._config;
+				var a = {
+					left	: function(w, h){return {"top":C.offset.top , "left":C.offset.left - w - C.of}},
+					top		: function(w, h){return {"top":C.offset.top - h - C.of, "left":C.offset.left}},
+					right	: function(w, h){return {"top":C.offset.top , "left":C.offset.left + C.width + C.of}},
+					bottom	: function(w, h){return {"top":C.offset.top + C.height + C.of , "left":C.offset.left}}
+				}
+				
+				return a[p](w,h);
+		},
+		// 内部方法
+		_getScroll:function(){
+			return {
+				top: D.db.scrollTop + D.dd.scrollTop,
+				left: D.db.scrollLeft + D.dd.scrollLeft
+			}
+		},
+		// 内部方法
+		_winSizeCheck:function(wrap){
+			var self = this, config = self._config;
+			self.func = function(){
+				self._updateInfo();
+				var p 	= self._pos.call(self, config.p, wrap.offsetWidth, wrap.offsetHeight);
+				var sp	= self._getScroll();
+				
+				wrap.style.top = p.top + sp.top + "px";
+				wrap.style.left = p.left + sp.left + "px";
+			};
+			win.addEventListener ? win.addEventListener('resize', self.func, false): win.attachEvent('onresize', self.func);
+		}
+	}
+	
+	win[namespace] = TIP; // 声明命名空间
+	win[namespace]['config'] = defaultConfig; // 静态默认配置
+	
+})(window, 'Stip');
+// 这里可以把Stip 改成你想要的命名空间
