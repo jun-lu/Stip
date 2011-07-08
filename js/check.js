@@ -13,7 +13,7 @@
 					return str ? String(parseFloat(str)) === str : false;//此方法需要重构
 				},
 				isEmail:function(str){
-					return false;
+					return /^[\w._-]+@[\w_-]+\.\w+$/.test(str);
 				},
 				minValue:function(str, min){
 					return tool.isFloat(str) ? parseFloat(str) >= min : false;
@@ -36,7 +36,8 @@
 				"minValue":{fn:"minValue", msg:function(n){return "最小值必须大于" + n;}},
 				"maxValue":{fn:"maxValue", msg:function(n){return "最大值必须小于" + n;}},
 				"minLength":{fn:"minLength", msg:function(n){return "最小长度为" + n;}},
-				"maxLength":{fn:"maxLength", msg:function(n){return "最大长度为" + n;}}
+				"maxLength":{fn:"maxLength", msg:function(n){return "最大长度为" + n;}},
+				"email":{fn:"isEmail", msg:function(){ return "填写正确的Email";}}
 			};
 			
 			var check = function(rule){
@@ -62,7 +63,7 @@
 					var str = this.input.value;
 					var key, mapKey, ruleKey, msg, i = 0;
 					var ok = true;
-					var keys = ["int","string","float","minValue","maxValue","minLength","maxLength"];
+					var keys = ["int","string","float","minValue","maxValue","minLength","maxLength","email"];
 					
 					for(i; i<keys.length; i++){	
 						
@@ -74,9 +75,9 @@
 							ruleKey = this.rule[key];
 
 							if( !tool[ mapKey["fn"] ](str, ruleKey["rule"]) ){
-								this.Stip && this.Stip.hide()
+								this.Stip && this.Stip.hide();
 								this.Stip = new Stip(this.input);
-								this.Stip.show(( ruleKey["msg"] || mapKey["msg"](ruleKey["rule"]) ));
+								this.Stip.show({"content":( ruleKey["msg"] || mapKey["msg"](ruleKey["rule"]) ), kind:"error"});
 								
 								ok = false;
 								break;

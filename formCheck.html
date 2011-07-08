@@ -49,8 +49,8 @@
 			{
 				id:"number1",
 				type:{rule:"int", msg:"你应该填写点什么东西"},
-				minValue:{rule:2, msg:""},
-				maxValue:{rule:10, msg:""}
+				minValue:{rule:2},
+				maxValue:{rule:10}
 			},
 			{
 				id:"number2",
@@ -62,6 +62,10 @@
 				id:"number3",
 				minValue:{rule:10},
 				maxValue:{rule:20}
+			},
+			{
+				id:"number4",
+				email:{rule:true},
 			}
 		]
 		var c = new checkForm(a);		
