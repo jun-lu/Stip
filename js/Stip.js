@@ -4,6 +4,7 @@
  * 
  * 2011/01/21 14:39 by lujun
  * 2011/02/23 13:48 修正了opera的一个事件绑定错误
+ * 2011/07/10 14:23 Stip的parentnode不再是body。
  */
 ;;(function(win, namespace, undef){
 	var D = {
