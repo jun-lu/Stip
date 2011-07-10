@@ -134,6 +134,7 @@
 			self.id = x.id;
 			
 			x.innerHTML = D.html.replace("<%=p%>",config.p).replace(/<%=r%>/g, r).replace("<%=kind%>", config.kind);
+			
 			if(!wrap){
 				div = document.createElement('DIV');
 				div.id = "StipJun";
