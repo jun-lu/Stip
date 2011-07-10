@@ -4,7 +4,7 @@
  * 
  * 2011/01/21 14:39 by lujun
  * 2011/02/23 13:48 修正了opera的一个事件绑定错误
- * 2011/07/10 14:23 Stip的parentnode不再是body。
+ * 2011/07/10 14:23 Stip的parentnode不再是body。 修改 TIP constructor 指向
  */
 ;;(function(win, namespace, undef){
 	var D = {
@@ -56,6 +56,7 @@
 	
 	TIP.prototype = {
 		// 显示
+		constructor:TIP,
 		show:function(json){
 			
 			var self = this, config = self._config,
