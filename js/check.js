@@ -13,7 +13,7 @@
 					return str ? String(parseFloat(str)) === str : false;//此方法需要重构
 				},
 				isEmail:function(str){
-					return /^[\w._-]+@[\w_-]+\.\w+$/.test(str);
+					return /^[\w._\-]+@[\w_\-]+\.\w+$/.test(str);
 				},
 				minValue:function(str, min){
 					return tool.isFloat(str) ? parseFloat(str) >= min : false;
@@ -40,11 +40,11 @@
 				"email":{fn:"isEmail", msg:function(){ return "填写正确的Email";}}
 			};
 			
-			var check = function(rule){
+			var Check = function(rule){
 				this.init(rule);
 			};
 			
-			check.prototype = {
+			Check.prototype = {
 				init:function(rule){
 					this.input = tool.$(rule.id);
 					
@@ -58,7 +58,7 @@
 					this.rule = rule;
 					this.Stip = null;
 				},
-				constructor:check,
+				constructor:Check,
 				okay:function(){
 					var str = this.input.value;
 					var key, mapKey, ruleKey, msg, i = 0;
@@ -99,15 +99,15 @@
 			}
 
 			
-			var checkForm = function(rules){	
+			var CheckForm = function(rules){	
 				this.checkList = [];
 				this.init(rules);
-			}
-			checkForm.prototype = {
+			};
+			CheckForm.prototype = {
 				init:function(rules){
 					var i;
 					for(i=0; i<rules.length; i++){
-						this.checkList.push(new check(rules[i]));
+						this.checkList.push(new Check(rules[i]));
 					}
 				},
 				okay:function(){
@@ -128,5 +128,5 @@
 					return valueMap;
 				}
 			};
-			window.checkForm = checkForm;
+			window.CheckForm = CheckForm;
 		})();
