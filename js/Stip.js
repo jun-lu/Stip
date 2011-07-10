@@ -125,7 +125,7 @@
 		// 内部方法
 		_append:function(){
 			var self = this , config = self._config,
-				r, x;
+				r, x, div, wrap = D.$("StipJun");
 				
 			r = config.rand = ++D.i
 			x = document.createElement("DIV");
@@ -133,7 +133,14 @@
 			self.id = x.id;
 			
 			x.innerHTML = D.html.replace("<%=p%>",config.p).replace(/<%=r%>/g, r).replace("<%=kind%>", config.kind);
-			document.body.appendChild(x);
+			if(!wrap){
+				div = document.createElement('DIV');
+				div.id = "StipJun";
+				div.appendChild(x);
+				document.body.appendChild(div);
+			}else{
+				wrap.appendChild(x);
+			};
 			
 			if(config.closeBtn){ // 有关闭按钮
 				var hide = function(){self.hide();}
