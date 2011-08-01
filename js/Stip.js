@@ -2,9 +2,12 @@
  * Stip JavaScript v3.0
  * http://www.cnblogs.com/idche/
  * 
- * 2011/01/21 14:39 by lujun
+ * 2011/01/21 14:39 lujun
  * 2011/02/23 13:48 修正了opera的一个事件绑定错误
  * 2011/07/10 14:23 Stip的parentnode不再是body。 修改 TIP constructor 指向
+ * 2011/08/01 
+			-修改一些变量名
+			-修改默认提示内容为 elemant 的 data-stip 属性内容
  */
 ;;(function(win, namespace, undef){
 	var D = {
@@ -15,31 +18,33 @@
 		i:0, // 最外层DOM id 元素开始数
 		mix:function(r, s, a){
 			for(var i in s){
-				r[i] = s[i];
+				if(s.hasOwnProperty(i)){
+					r[i] = s[i];
+				}
 			}
 			return r;
 		},
-		html:"<div class=\"lj-tipsWrap lj-<%=kind%>\" id=\"tipsWrap-<%=r%>\">\
+		html:"<div class=\"lj-stip lj-<%=kind%>\" id=\"ljTips-<%=r%>\">\
 						<div class=\"lj-content\"></div>\
 						<span class=\"lj-in lj-<%=p%>\"><span class=\"lj-in lj-span\"></span></span>\
 						<a href=\"javascript:void(0)\" id=\"ljClose<%=r%>\" class=\"lj-close\">x</a>\
 					</div>"
-	}
+	};
 	
 	/* 可配置参数 */
 	var defaultConfig = {
 		prefix: 'JunLu', // 最外层DOM元素ID前缀
 		p: 'right', // 默认方向
-		kind: 'correct', // 类型 correct or error
-		closeP: 'ljClose', // 关闭按钮前缀
-		wrapP: 'tipsWrap-', //
+		kind: 'ok', // 默认类型 ok or error
+		closePrefix: 'ljClose', // 关闭按钮前缀
+		wrapPrefix: 'ljTips-', //
 		closeBtn: false, // 默认是否有关闭按钮
 		time:null, // 默认显示时间 一直显示
-		offset: null,
-		content:function(){ return "Hello World";},//默认内容
-		of: 15,
-		rand: 0
-	}
+		offset: null,//保存位置
+		content:function(ele){return ele.getAttribute("data-stip");},//默认内容
+		of: 15,//偏移量
+		rand: 0 //开始值
+	};
 	/* 可配置参数 end */
 	
 	var TIP = function(id){
@@ -52,7 +57,7 @@
 		this.clearTime = null;
 		this.func = null;
 		(D.db !== document.body) && this._init(); // 防止 D.db 对象加载失败
-	}
+	};
 	
 	TIP.prototype = {
 		// 显示
@@ -147,12 +152,12 @@
 			
 			if(config.closeBtn){ // 有关闭按钮
 				var hide = function(){self.hide();}
-				D.$(config.closeP + r).onclick = hide;
+				D.$(config.closePrefix + r).onclick = hide;
 			}else{
-				D.$(config.closeP + r).style.display = "none";
+				D.$(config.closePrefix + r).style.display = "none";
 			}
 			
-			return D.$(config.wrapP + r);
+			return D.$(config.wrapPrefix + r);
 		},
 		// 内部方法
 		_pos:function(p,w,h){

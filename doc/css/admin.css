@@ -1,0 +1,39 @@
+﻿	root,html,body{height:100%; padding:0; margin:0;}
+
+	
+	#doc{min-height:100%;+height:100%;position:relative;}/*背景颜色*/
+	#hd{ border-bottom:1px solid #CCC;}
+	#hd,.fd{width:100%;position:absolute; overflow:hidden;height:30px;background:#eee;}/* header footer 高度以及背景颜色*/
+	.bd{min-height:100%;overflow:hidden;}
+		.bd-in{ margin-top:30px;}/* maring-top #hd 高度一致*/
+	.fd{bottom:0;border-top:1px solid #CCC;}
+	.main-in{overflow:hidden;}
+	.clear{*zoom:1;}
+	.clear:after{content:"\20";display:block;height:0;clear:both;visibility:hidden;}
+	/* 以上不用改变 */
+
+
+	/* y-t1, y-t2 背景颜色就是主体部分颜色 */
+	.y-t1{background:#f8f8f8;}
+	.y-t1 .bd-in{margin-bottom:30px;}/* maring-bottom #fd 高度一致*/
+	.y-t1 .side{width:200px;float:left;}
+	.y-t1 .main{width:100%;float:right;margin-left:-200px;}
+	.y-t1 .main-in{ margin-left:200px;}
+
+
+
+	.y-t2{background:#f8f8f8;}
+	.y-t1 .bd-in{margin-bottom:30px;}/* maring-bottom #fd 高度一致*/
+	.y-t2 .side{width:200px;float:right;}
+	.y-t2 .main{width:100%;float:left;margin-right:-200px;}
+	.y-t2 .main-in{ margin-right:200px;}
+
+
+
+	/* footer 高度将填充 剩余的页面高度， 此要求body的背景颜色 与 fd的背景颜色一直 */
+	.y-t3{background:#eee;}
+	.y-t3 .fd{bottom:auto;}
+	.y-t3 .bd{background:#f8f8f8;}
+	.y-t3 .side{width:200px;float:left;}
+	.y-t3 .main{width:100%;float:right;margin-left:-200px;}
+	.y-t3 .main-in{ margin-left:200px;}

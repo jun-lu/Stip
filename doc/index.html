@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<title> Stip</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/admin.css"/>
+<link rel="stylesheet" href="css/ui.css" />
+<link rel="stylesheet" type="text/css" href="hl/style.css" media="all" />
+<!--载入Stip-->
+<link rel="stylesheet" href="../css/Stip.css" />
+<!--载入Stip-->
+</head>
+
+<body>
+
+<div id="doc" class="y-t1">
+	<div id="hd"><h1>Stip</h1></div>
+    <div class="bd">
+    	<div class="bd-in clear">
+        	<div class="main">
+            	<div class="main-in">
+					<div id="content" class="main-content">
+					
+						<div>
+							<em>Stip</em> 适用于页面提示效果。兼容主流浏览器（ie,firefox,chrome,opera,Safari 等），不依赖其他框架，不使用图片（三角是用CSS做的）<br/>
+							
+						</div>
+						
+						<h3>Hello world</h3>
+						<p>参数是字符串，默认Stip没有关闭按钮。</p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test').show("hello World");	
+							<pre>
+						</div>
+						<div>
+							<button id="test">Click here</button>
+						</div>
+						
+						<h3>关闭按钮</h3>
+						<p>参数为一个json数据格式，这里配置<em>内容</em>和<em>关闭按钮</em></p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test1').show({
+	content:"hello world",
+	closeBtn:true
+});
+							<pre>
+						</div>
+						<div>
+							<button id="test1">Click here</button>
+						</div>
+						
+						<h3>任意位置</h3>
+						<p>Stip 可以在4个方向弹出提示框，参数又p来配置</p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test2').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'left'
+});
+
+
+Stip('test3').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'top'
+});
+
+
+Stip('test4').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'bottom'
+});
+
+
+Stip('test5').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'right'
+});
+
+							<pre>
+						</div>
+						<div>
+							<button id="test2">Click here</button> <button id="test3">Click here</button> <button id="test4">Click here</button> <button id="test5">Click here</button>
+						</div>
+						
+						<h3>多样式</h3>
+						<p>默认为你提供了两种样式，可根据情况自己 <a href="#">定义更多样式</a></p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test6').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'top',
+	kind:'error'
+});
+
+Stip('test7').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'top',
+	kind:'ok'
+});
+							<pre>
+						</div>
+						<div>
+							<button id="test6">Click here</button> <button id="test7">Click here</button>
+						</div>					</div>
+                </div>
+            </div>
+        	<div class="side">
+				<div class="side-nav">
+					<div class="nav-group">
+						<h2>Say hello</h2>
+						<ul>
+							<li><a href="#">Hello World</a></li>
+						</ul>
+					</div>
+					
+					<div class="nav-group">
+						<h2>API</h2>
+						<ul>
+							<li><a href="#">hello world</a></li>
+							<li><a href="#">hello world</a></li>
+						</ul>
+					</div>
+					
+					<div class="nav-group">
+						<h2>其他</h2>
+						<ul>
+							<li><a href="#">hello world</a></li>
+							<li><a href="#">hello world</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="fd">
+	
+		<div class="copyright">
+			2011-08-01 by lujun
+		</div>
+		
+	</div>
+</div>
+<script src="js/jquery-1.6.js"></script>
+<!--载入Stip-->
+<script src="../js/Stip.js"></script>
+<!--载入Stip-->
+<script src="hl/highlight.js"></script>
+<script src="hl/lang-js.js"></script>
+<script src="hl/lang-xml.js"></script>
+<script src="hl/lang-html.js"></script>
+<script src="hl/lang-css.js"></script>
+<script src="hl/helpers.js"></script>
+<script>
+ DlHighlight.HELPERS.highlightByName('dlhl', "pre");
+</script>
+
+<script>
+	$('#test').click(function(){
+		Stip('test').show("Hello world");
+	});
+	
+	$('#test1').click(function(){
+		Stip('test1').show({
+			content:"hello world",
+			closeBtn:true
+		});
+	});
+	
+	$('#test2').click(function(){
+		Stip('test2').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'left'
+		});
+	});
+	
+	$('#test3').click(function(){
+		Stip('test3').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'top'
+		});
+	});
+	
+	$('#test4').click(function(){
+		Stip('test4').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'bottom'
+		});
+	});
+	
+	$('#test5').click(function(){
+		Stip('test5').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'right'
+		});
+	});
+	
+	$('#test6').click(function(){
+		Stip('test6').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'top',
+			kind:'error'
+		});
+	});
+	
+	$('#test7').click(function(){
+		Stip('test7').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'top',
+			kind:'ok'
+		});
+	});
+</script>
+</body>
+</html>
