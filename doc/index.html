@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="utf-8" />
@@ -26,11 +26,21 @@
 							<em>Stip</em> 适用于页面提示效果。兼容主流浏览器（ie,firefox,chrome,opera,Safari 等），不依赖其他框架，不使用图片（三角是用CSS做的）<br/>
 							
 						</div>
+						<h3>如何使用</h3>
+						<p>在页面引入 stip.css stip.js两位个文件即可</p>
+						<div class="code">
+							<pre name="dlhl" class="html">
+&lt;link rel="stylesheet" href="css/Stip.css" /&gt;
+&lt;script src="js/Stip.js"&gt;&lt;/script&gt;
+							<pre>
+						</div>
+						
+						
 						
 						<h3>Hello world</h3>
 						<p>参数是字符串，默认Stip没有关闭按钮。</p>
 						<div class="code">
-							<pre  name="dlhl" class="js">
+							<pre name="dlhl" class="js">
 Stip('test').show("hello World");	
 							<pre>
 						</div>
@@ -38,79 +48,7 @@ Stip('test').show("hello World");
 							<button id="test">Click here</button>
 						</div>
 						
-						<h3>关闭按钮</h3>
-						<p>参数为一个json数据格式，这里配置<em>内容</em>和<em>关闭按钮</em></p>
-						<div class="code">
-							<pre  name="dlhl" class="js">
-Stip('test1').show({
-	content:"hello world",
-	closeBtn:true
-});
-							<pre>
-						</div>
-						<div>
-							<button id="test1">Click here</button>
-						</div>
-						
-						<h3>任意位置</h3>
-						<p>Stip 可以在4个方向弹出提示框，参数又p来配置</p>
-						<div class="code">
-							<pre  name="dlhl" class="js">
-Stip('test2').show({
-	content:"hello world",
-	closeBtn:true,
-	p:'left'
-});
-
-
-Stip('test3').show({
-	content:"hello world",
-	closeBtn:true,
-	p:'top'
-});
-
-
-Stip('test4').show({
-	content:"hello world",
-	closeBtn:true,
-	p:'bottom'
-});
-
-
-Stip('test5').show({
-	content:"hello world",
-	closeBtn:true,
-	p:'right'
-});
-
-							<pre>
-						</div>
-						<div>
-							<button id="test2">Click here</button> <button id="test3">Click here</button> <button id="test4">Click here</button> <button id="test5">Click here</button>
-						</div>
-						
-						<h3>多样式</h3>
-						<p>默认为你提供了两种样式，可根据情况自己 <a href="#">定义更多样式</a></p>
-						<div class="code">
-							<pre  name="dlhl" class="js">
-Stip('test6').show({
-	content:"hello world",
-	closeBtn:true,
-	p:'top',
-	kind:'error'
-});
-
-Stip('test7').show({
-	content:"hello world",
-	closeBtn:true,
-	p:'top',
-	kind:'ok'
-});
-							<pre>
-						</div>
-						<div>
-							<button id="test6">Click here</button> <button id="test7">Click here</button>
-						</div>					</div>
+					</div>
                 </div>
             </div>
         	<div class="side">
@@ -118,23 +56,23 @@ Stip('test7').show({
 					<div class="nav-group">
 						<h2>Say hello</h2>
 						<ul>
-							<li><a href="#">Hello World</a></li>
+							<li><a href="index.html">Hello World</a></li>
 						</ul>
 					</div>
 					
 					<div class="nav-group">
 						<h2>API</h2>
 						<ul>
-							<li><a href="#">hello world</a></li>
-							<li><a href="#">hello world</a></li>
+							<li><a href="apishow.html">API演示</a></li>
+							<li><a href="#">API文档</a></li>
 						</ul>
 					</div>
 					
 					<div class="nav-group">
 						<h2>其他</h2>
 						<ul>
-							<li><a href="#">hello world</a></li>
-							<li><a href="#">hello world</a></li>
+							<li><a href="#">关于</a></li>
+							<li><a href="#">下载</a></li>
 						</ul>
 					</div>
 				</div>

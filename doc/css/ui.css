@@ -50,6 +50,6 @@ h1{text-shadow:#fff 1px 1px; font-size:18px;margin:5px 0 0 20px;}
 .code-info{font-weight:700;font-size:16px;padding:0.5em 0;}
 
 /* 内容区块 */
-h3{font-size:18px;margin-top:40px;}
+h3{font-size:18px;margin-top:40px;font-weight:700;}
 .main-content em{color:#DD4B39;}
 .main-content p{text-indent:1em;line-height:1.5em;margin:10px 0;}
