@@ -7,7 +7,7 @@
  * 2011/07/10 14:23 Stip的parentnode不再是body。 修改 TIP constructor 指向
  * 2011/08/01 
 			-修改一些变量名
-			-修改默认提示内容为 elemant 的 data-stip 属性内容
+			-修改默认提示内容为 element 的 data-stip 属性内容
  */
 ;;(function(win, namespace, undef){
 	var D = {

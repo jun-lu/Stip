@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
 <meta charset="utf-8" />
 <title> Stip</title>
@@ -142,8 +142,23 @@ Stip('test11').show();//.show没有参数
 							<button id="test11" data-stip="从test11读取的提示内容">Click here</button>
 						</div>	
 
-
-						<h3>用代码关闭</h3>
+						<h3>参数是一个function</h3>
+						<p>.show 可以传递一个function,注意function的第一个参数将会接收到当前element，function返回值作为提示内容</p>
+						<div class="code">
+							<pre  name="dlhl" class="html">
+Stip('test12').show(function(ele){
+	return ele.getAttribute('stip');
+});
+							</pre>
+						</div>
+						<div>
+							<button id="test12" stip="定义在stip属性上">Click here</button>
+						</div>	
+						
+						
+						
+						
+						<h3>显示和隐藏</h3>
 						<p>用代码清除提示，先保存stip对象，调用它的show,和hide方法</p>
 						<div class="code">
 							<pre  name="dlhl" class="js">
@@ -318,6 +333,11 @@ stip.hide();//隐藏
 		Stip('test11').show();
 	});
 	
+	$('#test12').click(function(){
+		Stip('test12').show(function(ele){
+			return ele.getAttribute('stip');
+		});
+	});
 </script>
 </body>
 </html>
