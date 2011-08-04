@@ -3,6 +3,7 @@
  * Stip 3.0
  * lujun  idche@qq.com   http://www.cnblogs.com/idche/
  * 2011/01/21 14:39
+ * 2011/08/02 修改渐进增强的CSS 兼容 opear浏览器
  */
 .lj-stip{min-width:10px;min-height:15px;font-family:'Segoe UI',Calibri, 'Myriad Pro', Myriad, 'Trebuchet MS', Helvetica, Arial, sans-serif;}
 .lj-stip,.lj-in,.lj-close{display:inline-block;}
@@ -36,7 +37,7 @@
 
 
 /*----------- 可配置css  kind ------------*/
-.lj-stip{ position:absolute; z-index:1;} /* 可修改z-index 让他不会被盖住*/
+.lj-stip{position:absolute; z-index:1;} /* 可修改z-index 让他不会被盖住*/
 /* error css */
 .lj-error{background:#F90;color:#f30; border:1px solid #FB8888; background:#FEF2F2;}
 .lj-error .lj-top{border-top-color:#FB8888;}

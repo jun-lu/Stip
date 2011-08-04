@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="zh" >
+<head>
+<meta charset="utf-8" />
+<title> Stip</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/admin.css"/>
+<link rel="stylesheet" href="css/ui.css" />
+<link rel="stylesheet" type="text/css" href="hl/style.css" media="all" />
+<!--载入Stip-->
+<link rel="stylesheet" href="../css/Stip.css" />
+<!--载入Stip-->
+</head>
+
+<body>
+
+<div id="doc" class="y-t1">
+	<div id="hd"><h1>Stip</h1></div>
+    <div class="bd">
+    	<div class="bd-in clear">
+        	<div class="main">
+            	<div class="main-in">
+					<div id="content" class="main-content">
+					
+						
+						<h3>全局变量</h3>
+						<p>Stip,可以通过Stip.js最后一行修改全部变量</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+//代码最后一行							
+})(window, 'Stip'); //可以把 Stip 修改成任意你想要的命名空间
+							<pre>
+						</div>
+						
+						
+						
+						<h3>Stip构造器参数</h3>
+						<p>Stip string | element</p>
+						<div class="code">
+							<pre name="dlhl" class="js">							
+Parameter String(element id)
+Parameter Element
+return  Object
+	
+							<pre>
+						</div>
+						
+						
+						<h3>.show</h3>
+						<p>显示提示</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+Parameter none //相当于传递了Funciont参数
+	-function(ele){return ele.getAttribute("data-stip");}							
+Parameter String //提示内容
+Parameter Function //返回值作为提示内容，默认接受 element参数
+Parameter JSON
+	-json = {
+		content: String, // 默认 空
+		p:String //('left' | 'top' | 'right' | 'bottom'), 默认right
+		kind:String //('ok' | 'error'), 默认 ok
+		time: Number// 显示时间(单位毫秒), 默认不关闭
+		closeBtn:Boolean// 关闭按钮 默认 false
+		
+	}
+return  false;
+	
+							<pre>
+						</div>
+						
+						
+						
+						<h3>.hide</h3>
+						<p>关闭提示</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+//无参数，无返回值
+							<pre>
+						</div>
+						
+						<h3>配置更多提示样式</h3>
+						<p>如果你不太满意ok error这两种样式，你完全可以按照CSS中 ok的样式去修改。</p>
+						<div class="code">
+							<pre name="dlhl" class="css">
+
+/* ok css */
+.lj-ok{color:#000; border:1px solid #2192D3; background:#F4FBFF;}
+.lj-ok .lj-top{border-top-color:#2192D3;}
+.lj-ok .lj-right{border-right-color:#2192D3;}
+.lj-ok .lj-left{border-left-color:#2192D3;}
+.lj-ok .lj-bottom{border-bottom-color:#2192D3;}
+
+.lj-ok .lj-top .lj-span{border-top-color:#F4FBFF;}
+.lj-ok .lj-right .lj-span{border-right-color:#F4FBFF;}
+.lj-ok .lj-left .lj-span{border-left-color:#F4FBFF;}
+.lj-ok .lj-bottom .lj-span{border-bottom-color:#F4FBFF;}
+
+/* 依照 ok css 写一个xxoo的CSS*/
+/* xxoo CSS */
+.lj-xxoo{color:#000; border:1px solid #f30; background:#000;}
+.lj-xxoo .lj-top{border-top-color:#f30;}
+.lj-xxoo .lj-right{border-right-color:#f30;}
+.lj-xxoo .lj-left{border-left-color:#f30;}
+.lj-xxoo .lj-bottom{border-bottom-color:#f30;}
+
+.lj-xxoo .lj-top .lj-span{border-top-color:#000;}
+.lj-xxoo .lj-right .lj-span{border-right-color:#000;}
+.lj-xxoo .lj-left .lj-span{border-left-color:#000;}
+.lj-xxoo .lj-bottom .lj-span{border-bottom-color:#000;}
+
+//注意  border:1px solid #2192D3; border的颜色和lj-top,lj-right,lj-left,lj-bottom颜色一致
+//background:#F4FBFF; 颜色和 .lj-span的颜色保持一致
+
+							<pre>
+							<p>配置完成就可以这样调用了</p>
+							<pre name="dlhl" class="js">
+Stip('test').show({
+	content:'hello world',
+	kind:'xxoo'
+})
+							</pre>
+						</div>
+						
+					</div>
+                </div>
+            </div>
+        	        	<div class="side">
+				<div class="side-nav">
+					<div class="nav-group">
+						<h2>Say hello</h2>
+						<ul>
+							<li><a href="index.html">Hello World</a></li>
+						</ul>
+					</div>
+					
+					<div class="nav-group">
+						<h2>API</h2>
+						<ul>
+							<li><a href="apishow.html">API演示</a></li>
+							<li><a href="apidoc.html">API文档</a></li>
+						</ul>
+					</div>
+					
+					<div class="nav-group">
+						<h2>其他</h2>
+						<ul>
+							<li><a href="about.html">关于</a></li>
+							<li><a href="download.html">下载</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="fd">
+	
+		<div class="copyright">
+			2011-08-01 by lujun
+		</div>
+		
+	</div>
+</div>
+<script src="hl/highlight.js"></script>
+<script src="hl/lang-js.js"></script>
+<script src="hl/lang-xml.js"></script>
+<script src="hl/lang-html.js"></script>
+<script src="hl/lang-css.js"></script>
+<script src="hl/helpers.js"></script>
+<script>
+ DlHighlight.HELPERS.highlightByName('dlhl', "pre");
+</script>
+</body>
+</html>
