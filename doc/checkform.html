@@ -16,7 +16,6 @@
 <noscript>
 	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
 </noscript>
-
 <div id="doc" class="y-t1">
 	<div id="hd"><h1 id="H1">Stip</h1></div>
     <div class="bd">
@@ -26,8 +25,7 @@
 					<div id="content" class="main-content">
 					
 						<div>
-							<em>Stip</em> 适用于页面提示效果。兼容主流浏览器（ie,firefox,chrome,opera,Safari 等），不依赖其他框架，不使用图片（三角是用CSS做的）<br/>
-							
+							<em>CheckForm</em> 是继续Stip插件的表单验证提示插件，轻松表单验证。
 						</div>
 						<h3>如何使用</h3>
 						<p>在页面引入 stip.css stip.js两位个文件即可</p>
@@ -35,20 +33,55 @@
 							<pre name="dlhl" class="html">
 &lt;link rel="stylesheet" href="css/Stip.css" /&gt;
 &lt;script src="js/Stip.js"&gt;&lt;/script&gt;
+&lt;script src="js/checkform.js"&gt;&lt;/script&gt;
 							</pre>
 						</div>
 						
 						
 						
-						<h3>Hello world</h3>
-						<p>参数是字符串，默认Stip没有关闭按钮。</p>
+						<h3>验证一个input</h3>
+						<p>okay 方法返回一个布尔值，表示当前是否符合所定义的全部规则</p>
 						<div class="code">
 							<pre name="dlhl" class="js">
-Stip('test').show("hello World");	
+var checkfrom = [ //配置验证规则
+	{
+		id:"testinput", // input id
+		type:{rule:"int", msg:"必须为数字"}, //类型必须是int 错误提示msg
+		minValue:{rule:2, msg:"最小值为2"}, //最小值 2 错误提示msg
+		maxValue:{rule:10}//最大值 错误提示 checkform自带
+	}
+];
+	
+var check = new CheckForm(checkfrom);//实例化
+
+$('#test').click(function(){
+	alert( check.okay() );// okay() 立即验证所有规则，所有规则正确返回 true 否则false
+});
 							</pre>
 						</div>
+						
 						<div>
-							<button id="test">Click here</button>
+							<div>
+								<input type="text" id="testinput" />
+							</div>
+							<div class="mt-10">
+								<button id="test">Click here</button>
+							</div>
+						</div>
+						
+						
+						<h3>更多验证规则</h3>
+						<p>验证规则不仅仅局限于 输入类型 最大 最小，请看下面</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+type 的可选规则 int string float
+minValue 可选规则一个具体数值
+maxValue 可选规则一个具体数值
+minLength 一个具体数值
+maxLength 一个具体数值
+email 只能 true
+reg 一个正则表达式
+							</pre>
 						</div>
 						
 					</div>
@@ -64,15 +97,17 @@ Stip('test').show("hello World");
     <div class="fd">
 	
 		<div class="copyright">
-			<span id="copyRight"></span>
+			<span id="copyRight">2011-08-01 by lujun</span>
 		</div>
 		
 	</div>
 </div>
 <script src="js/jquery-1.6.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+
 <!--载入Stip-->
 <script src="../js/Stip.js"></script>
+<script src="../js/checkform.js"></script>
 <!--载入Stip-->
 <script src="hl/highlight.js"></script>
 <script src="hl/lang-js.js"></script>
@@ -86,71 +121,28 @@ Stip('test').show("hello World");
 </script>
 
 <script>
+	var checkfrom = [
+		{
+			id:"testinput",
+			type:{rule:"int", msg:"必须为数字"},
+			minValue:{rule:2, msg:"最小值为2"},
+			maxValue:{rule:10}
+		}
+	];
+	
+	var check = new CheckForm(checkfrom);
+	
 	$('#test').click(function(){
-		Stip('test').show("Hello world");
+		alert( check.okay() );
 	});
 	
-	$('#test1').click(function(){
-		Stip('test1').show({
-			content:"hello world",
-			closeBtn:true
-		});
-	});
-	
-	$('#test2').click(function(){
-		Stip('test2').show({
-			content:"hello world",
-			closeBtn:true,
-			p:'left'
-		});
-	});
-	
-	$('#test3').click(function(){
-		Stip('test3').show({
-			content:"hello world",
-			closeBtn:true,
-			p:'top'
-		});
-	});
-	
-	$('#test4').click(function(){
-		Stip('test4').show({
-			content:"hello world",
-			closeBtn:true,
-			p:'bottom'
-		});
-	});
-	
-	$('#test5').click(function(){
-		Stip('test5').show({
-			content:"hello world",
-			closeBtn:true,
-			p:'right'
-		});
-	});
-	
-	$('#test6').click(function(){
-		Stip('test6').show({
-			content:"hello world",
-			closeBtn:true,
-			p:'top',
-			kind:'error'
-		});
-	});
-	
-	$('#test7').click(function(){
-		Stip('test7').show({
-			content:"hello world",
-			closeBtn:true,
-			p:'top',
-			kind:'ok'
-		});
-	});
 </script>
+
 <!--[if lte IE 7]>
 <script type="text/javascript">
 	Page.ie();
 </script>
 <![endif]-->
+
 </body>
 </html>

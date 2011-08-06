@@ -13,9 +13,12 @@
 </head>
 
 <body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
 
 <div id="doc" class="y-t1">
-	<div id="hd"><h1>Stip</h1></div>
+	<div id="hd"><h1 id="H1">Stip</h1></div>
     <div class="bd">
     	<div class="bd-in clear">
         	<div class="main">
@@ -32,7 +35,7 @@
 						<div class="code">
 							<pre name="dlhl" class="js">
 Stip('test').show("hello World");	
-							<pre>
+							</pre>
 						</div>
 						
 						<div>
@@ -47,7 +50,7 @@ Stip('test1').show({
 	content:"hello world",
 	closeBtn:true
 });
-							<pre>
+							</pre>
 						</div>
 						<div>
 							<button id="test1">Click here</button>
@@ -84,7 +87,7 @@ Stip('test5').show({
 	p:'right'
 });
 
-							<pre>
+							</pre>
 						</div>
 						<div>
 							<button id="test2">Click here</button> <button id="test3">Click here</button> <button id="test4">Click here</button> <button id="test5">Click here</button>
@@ -107,7 +110,7 @@ Stip('test7').show({
 	p:'top',
 	kind:'ok'
 });
-							<pre>
+							</pre>
 						</div>
 						<div>
 							<button id="test6">Click here</button> <button id="test7">Click here</button>
@@ -121,8 +124,9 @@ Stip('test8').show({
 	content:"hello world",
 	time:1000
 });
-							<pre>
+							</pre>
 						</div>
+
 						<div>
 							<button id="test8">Click here</button>
 						</div>							
@@ -183,7 +187,7 @@ var stip = Stip('test9');
 stip.show("显示提示效果"); //显示
 stip.hide();//隐藏
 	
-							<pre>
+							</pre>
 						</div>
 						<div>
 							<button id="test9">显示</button>  <button id="test10">隐藏</button>
@@ -194,7 +198,7 @@ stip.hide();//隐藏
                 </div>
             </div>
         	<div class="side">
-				<div class="side-nav">
+				<div class="side-nav" id="sideNav">
 					<div class="nav-group">
 						<h2>Say hello</h2>
 						<ul>
@@ -224,12 +228,13 @@ stip.hide();//隐藏
     <div class="fd">
 	
 		<div class="copyright">
-			2011-08-01 by lujun
+			<span id="copyRight"></span>
 		</div>
 		
 	</div>
 </div>
 <script src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <!--载入Stip-->
 <script src="../js/Stip.js"></script>
 <!--载入Stip-->
@@ -240,6 +245,7 @@ stip.hide();//隐藏
 <script src="hl/lang-css.js"></script>
 <script src="hl/helpers.js"></script>
 <script>
+ Page.init();
  DlHighlight.HELPERS.highlightByName('dlhl', "pre");
 </script>
 
@@ -339,5 +345,10 @@ stip.hide();//隐藏
 		});
 	});
 </script>
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
 </body>
 </html>

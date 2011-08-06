@@ -26,6 +26,9 @@
 				},
 				maxLength:function(str, max){
 					return str && String(str).length <= max;
+				},
+				regExp:function(str, reg){
+					return reg.test(str);
 				}
 			};
 			
@@ -37,7 +40,8 @@
 				"maxValue":{fn:"maxValue", msg:function(n){return "最大值必须小于" + n;}},
 				"minLength":{fn:"minLength", msg:function(n){return "最小长度为" + n;}},
 				"maxLength":{fn:"maxLength", msg:function(n){return "最大长度为" + n;}},
-				"email":{fn:"isEmail", msg:function(){ return "填写正确的Email";}}
+				"email":{fn:"isEmail", msg:function(){ return "填写正确的Email";}},
+				"reg":{fn:"regExp", mas:function(){ return "错误的输入格式";}}
 			};
 			
 			var Check = function(rule){
@@ -63,7 +67,7 @@
 					var str = this.input.value;
 					var key, mapKey, ruleKey, msg, i = 0;
 					var ok = true;
-					var keys = ["int","string","float","minValue","maxValue","minLength","maxLength","email"];
+					var keys = ["int","string","float","minValue","maxValue","minLength","maxLength","email","regExp"];
 					
 					for(i; i<keys.length; i++){	
 						

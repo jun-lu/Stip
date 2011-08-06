@@ -13,9 +13,12 @@
 </head>
 
 <body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
 
 <div id="doc" class="y-t1">
-	<div id="hd"><h1>Stip</h1></div>
+	<div id="hd"><h1 id="H1">Stip</h1></div>
     <div class="bd">
     	<div class="bd-in clear">
         	<div class="main">
@@ -29,7 +32,7 @@
 							<pre name="dlhl" class="js">
 //代码最后一行							
 })(window, 'Stip'); //可以把 Stip 修改成任意你想要的命名空间
-							<pre>
+							</pre>
 						</div>
 						
 						
@@ -42,7 +45,7 @@ Parameter String(element id)
 Parameter Element
 return  Object
 	
-							<pre>
+							</pre>
 						</div>
 						
 						
@@ -65,7 +68,7 @@ Parameter JSON
 	}
 return  false;
 	
-							<pre>
+							</pre>
 						</div>
 						
 						
@@ -75,7 +78,7 @@ return  false;
 						<div class="code">
 							<pre name="dlhl" class="js">
 //无参数，无返回值
-							<pre>
+							</pre>
 						</div>
 						
 						<h3>配置更多提示样式</h3>
@@ -111,7 +114,7 @@ return  false;
 //注意  border:1px solid #2192D3; border的颜色和lj-top,lj-right,lj-left,lj-bottom颜色一致
 //background:#F4FBFF; 颜色和 .lj-span的颜色保持一致
 
-							<pre>
+							</pre>
 							<p>配置完成就可以这样调用了</p>
 							<pre name="dlhl" class="js">
 Stip('test').show({
@@ -125,29 +128,8 @@ Stip('test').show({
                 </div>
             </div>
         	        	<div class="side">
-				<div class="side-nav">
-					<div class="nav-group">
-						<h2>Say hello</h2>
-						<ul>
-							<li><a href="index.html">Hello World</a></li>
-						</ul>
-					</div>
+				<div class="side-nav" id="sideNav">
 					
-					<div class="nav-group">
-						<h2>API</h2>
-						<ul>
-							<li><a href="apishow.html">API演示</a></li>
-							<li><a href="apidoc.html">API文档</a></li>
-						</ul>
-					</div>
-					
-					<div class="nav-group">
-						<h2>其他</h2>
-						<ul>
-							<li><a href="about.html">关于</a></li>
-							<li><a href="download.html">下载</a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
         </div>
@@ -155,11 +137,14 @@ Stip('test').show({
     <div class="fd">
 	
 		<div class="copyright">
-			2011-08-01 by lujun
+			<span id="copyRight">2011-08-01 by lujun</span>
 		</div>
 		
 	</div>
 </div>
+<script src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
 <script src="hl/highlight.js"></script>
 <script src="hl/lang-js.js"></script>
 <script src="hl/lang-xml.js"></script>
@@ -167,7 +152,13 @@ Stip('test').show({
 <script src="hl/lang-css.js"></script>
 <script src="hl/helpers.js"></script>
 <script>
+ Page.init();
  DlHighlight.HELPERS.highlightByName('dlhl', "pre");
 </script>
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
 </body>
 </html>

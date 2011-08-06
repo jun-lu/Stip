@@ -13,9 +13,12 @@
 </head>
 
 <body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
 
 <div id="doc" class="y-t1">
-	<div id="hd"><h1>Stip</h1></div>
+	<div id="hd"><h1 id="H1">Stip</h1></div>
     <div class="bd">
     	<div class="bd-in clear">
         	<div class="main">
@@ -34,29 +37,8 @@
                 </div>
             </div>
         	<div class="side">
-				<div class="side-nav">
-					<div class="nav-group">
-						<h2>Say hello</h2>
-						<ul>
-							<li><a href="index.html">Hello World</a></li>
-						</ul>
-					</div>
+				<div class="side-nav" id="sideNav">
 					
-					<div class="nav-group">
-						<h2>API</h2>
-						<ul>
-							<li><a href="apishow.html">API演示</a></li>
-							<li><a href="apidoc.html">API文档</a></li>
-						</ul>
-					</div>
-					
-					<div class="nav-group">
-						<h2>其他</h2>
-						<ul>
-							<li><a href="about.html">关于</a></li>
-							<li><a href="download.html">下载</a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
         </div>
@@ -70,7 +52,15 @@
 	</div>
 </div>
 <script src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+	Page.init();
+</script>
 
-
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
 </body>
 </html>

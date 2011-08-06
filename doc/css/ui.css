@@ -4,9 +4,12 @@ a:link{color:#36C;text-decoration:none;}
 a:visited{}
 a:hover{text-decoration:underline;}
 a:active{color:#DD4B39;}
+.mt-10{margin-top:10px;}
+.ml-10{margin-left:10px;}
 
 
 button,input[type=submit],input[type=button]{
+	margin:0;
 	padding:0.3em 1em;border:1px solid #AAA;
 	border-radius:2px;/*标准*/
 	-webkit-border-radius:2px;/*chrome Safari*/
@@ -56,13 +59,20 @@ button[disable],input[disable],input[disable]{
 	cursor:auto;
 }
 
+input[type=text]{
+	border:1px solid #ccc;padding:.3em ;
+}
+
 
 /*页面*/
 
 h1{text-shadow:#fff 1px 1px; font-size:18px;margin:5px 0 0 20px;}
 
+.noscript{border: 1px solid #FEBF90;background-color:#FFFBE1;display:block;padding:10px;}
 .main-content{margin:20px;}
 .main-in{border-left:1px solid #ccc;}
+.y-t1 .side{border-right: 1px solid #CCC;margin-right: -1px;}
+.side-nav{padding-bottom:50px;}
 .nav-group{padding-top:10px;padding-left:40px;}
 .nav-group a{display:block;padding:0.5em 2em;}
 .nav-group a:hover{background:#F1F1F1;}

@@ -13,9 +13,12 @@
 </head>
 
 <body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
 
 <div id="doc" class="y-t1">
-	<div id="hd"><h1>Stip</h1></div>
+	<div id="hd"><h1 id="H1"></h1></div>
     <div class="bd">
     	<div class="bd-in clear">
         	<div class="main">
@@ -29,35 +32,17 @@
 						<h3>GIT 下载</h3>
 						<p>git://github.com/jun-lu/Stip.git <a href="https://github.com/jun-lu/Stip" target="_blank">项目地址</a></p>
 						
+						<h3>表单验证JS</h3>
+						<p><a href="./js/Stip.js" target="_blank">Checkform.js</a></p>
+						
 						
 						
 					</div>
                 </div>
             </div>
         	<div class="side">
-				<div class="side-nav">
-					<div class="nav-group">
-						<h2>Say hello</h2>
-						<ul>
-							<li><a href="index.html">Hello World</a></li>
-						</ul>
-					</div>
+				<div class="side-nav" id="sideNav" >
 					
-					<div class="nav-group">
-						<h2>API</h2>
-						<ul>
-							<li><a href="apishow.html">API演示</a></li>
-							<li><a href="apidoc.html">API文档</a></li>
-						</ul>
-					</div>
-					
-					<div class="nav-group">
-						<h2>其他</h2>
-						<ul>
-							<li><a href="about.html">关于</a></li>
-							<li><a href="download.html">下载</a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
         </div>
@@ -65,13 +50,20 @@
     <div class="fd">
 	
 		<div class="copyright">
-			2011-08-01 by lujun
+			<span id="copyRight"></span>
 		</div>
 		
 	</div>
 </div>
 <script src="js/jquery-1.6.js"></script>
-
-
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+	Page.init();
+</script>
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
 </body>
 </html>
