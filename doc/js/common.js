@@ -61,7 +61,7 @@ var Page = {
 		$(id || '#copyRight').html("2011-08-01 by lujun");
 	},
 	showH1:function(id){
-		$(id || '#H1').text('Stip1');
+		$(id || '#H1').text('Stip');
 	},
 	ie:function(){
 		$('#doc').css('fontSize','24pt').html('我应该说服你放弃它吗？');
@@ -83,7 +83,8 @@ var Page = {
 		{
 			title:"扩展",
 			list:[
-				{href:'checkform.html',text:'表单验证', target:'_self'}
+				{href:'checkform.html',text:'表单验证', target:'_self'},
+				{href:'regexample.html',text:'注册案例', target:'_self'}
 			]
 		},
 		{

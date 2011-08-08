@@ -41,7 +41,7 @@
 				"minLength":{fn:"minLength", msg:function(n){return "最小长度为" + n;}},
 				"maxLength":{fn:"maxLength", msg:function(n){return "最大长度为" + n;}},
 				"email":{fn:"isEmail", msg:function(){ return "填写正确的Email";}},
-				"reg":{fn:"regExp", mas:function(){ return "错误的输入格式";}}
+				"reg":{fn:"regExp", msg:function(){ return "错误的输入格式";}}
 			};
 			
 			var Check = function(rule){
@@ -49,49 +49,53 @@
 			};
 			
 			Check.prototype = {
+				constructor:Check,
 				init:function(rule){
+					var newRule = {};
+					this.id = rule.id;
 					this.input = tool.$(rule.id);
-					
-					if(rule.type){
-						rule[rule.type.rule] = {rule:rule.type.rule, msg:rule.type.msg || ""};
-					}
 					
 					delete rule.id;
 					delete rule.type;
 					
-					this.rule = rule;
 					this.Stip = null;
-				},
-				constructor:Check,
-				okay:function(){
-					var str = this.input.value;
-					var key, mapKey, ruleKey, msg, i = 0;
-					var ok = true;
-					var keys = ["int","string","float","minValue","maxValue","minLength","maxLength","email","regExp"];
 					
-					for(i; i<keys.length; i++){	
-						
-						key = keys[i];
-						
-						if(this.rule[key] !== undefined){
-						
-							mapKey = Map[key];
-							ruleKey = this.rule[key];
+					for(i in rule){
+						if(Map.hasOwnProperty(i)){
+							newRule[i] = {
+								func:tool[ Map[i].fn ],
+								rule:rule[i].rule,
+								msg:rule[i].msg || Map[i].msg(rule[i].rule)
+							}
+						}
+					};
+					
+					this.rule = newRule;
+					
+				},
+				okay:function(){
+					var rule = this.rule;
+					var val = this.getValue();
+					var isOkay = true;
+					var ok = false;
+					for(var i in rule){
 
-							if( !tool[ mapKey["fn"] ](str, ruleKey["rule"]) ){
-								this.Stip && this.Stip.hide();
-								this.Stip = new Stip(this.input);
-								this.Stip.show({"content":( ruleKey["msg"] || mapKey["msg"](ruleKey["rule"]) ), kind:"error"});
-								
-								ok = false;
-								break;
+						ok = rule[i].func(val, rule[i].rule);
+						
+						if( ok == false){
+							isOkay = false;
+							if( !this.stip ){
+								this.stip = new Stip(this.input);	
 							}
 							
-							this.Stip && this.Stip.hide();
+							this.stip.show({content:rule[i].msg, kind:"error"});
+							break;
+						};
 						
-						}
+						this.stip && this.stip.hide();
+						
 					}
-					return ok;
+					return isOkay;
 				},
 				
 				getValue:function(){
@@ -104,32 +108,41 @@
 
 			
 			var CheckForm = function(rules){	
-				this.checkList = [];
+				this.checkList = {};
+				this.ids = [];
 				this.init(rules);
 			};
 			CheckForm.prototype = {
 				init:function(rules){
-					var i;
-					for(i=0; i<rules.length; i++){
-						this.checkList.push(new Check(rules[i]));
+					for(var i=0,len = rules.length; i<len; i++){
+						this.ids.push(rules[i].id);
+						this.checkList[rules[i].id] = new Check(rules[i]);
 					}
 				},
 				okay:function(){
-					var i, ok=true;
-					for(i=0;i<this.checkList.length;i++){
-						if( !this.checkList[i].okay() ){
+					var i, ok=true, len = this.ids.length;
+					var ids = this.ids;
+					
+					for(i=0; i<len; i++){
+						if( !this.checkList[ ids[i] ].okay() ){
 							ok = false;
 						}
 					}
+					
 					return ok;
 				},
 				getValues:function(){
 					var valueMap = {};
 					var i = 0;
-					for(i; i< this.checkList.length; i++){
-						valueMap[ this.checkList[i].input.getAttribute("name") ] = this.checkList[i].getValue();
+					var ids = this.ids;
+					var len = ids.length;
+					for(i; i< len; i++){
+						valueMap[ ids[i] ] = this.getValue(ids[i]);
 					}
 					return valueMap;
+				},
+				getValue:function(id){
+					return this.checkList[id].getValue();
 				}
 			};
 			window.CheckForm = CheckForm;

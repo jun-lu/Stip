@@ -24,11 +24,9 @@
             	<div class="main-in">
 					<div id="content" class="main-content">
 					
-						<div>
-							<em>CheckForm</em> 是继续Stip插件的表单验证提示插件，轻松表单验证。
-						</div>
-						<h3>如何使用</h3>
-						<p>在页面引入 stip.css, stip.js, checkform.js 3个文件即可</p>
+						
+						<h3>注册实例</h3>
+						<p>下面模拟一个用户注册的场景使用 checkform,Stip来制作</p>
 						<div class="code">
 							<pre name="dlhl" class="html">
 &lt;link rel="stylesheet" href="css/Stip.css" /&gt;
@@ -36,54 +34,16 @@
 &lt;script src="js/checkform.js"&gt;&lt;/script&gt;
 							</pre>
 						</div>
-						
-						
-						
-						<h3>验证一个input</h3>
-						<p>okay 方法返回一个布尔值，表示当前是否验证通过全部规则</p>
-						<div class="code">
-							<pre name="dlhl" class="js">
-var checkfrom = [ //配置验证规则
-	{
-		id:"testinput", // input id
-		type:{rule:"int", msg:"必须为数字"}, //类型必须是int 错误提示msg
-		minValue:{rule:2, msg:"最小值为2"}, //最小值 2 错误提示msg
-		maxValue:{rule:10}//最大值 错误提示 checkform自带
-	}
-];
-	
-var check = new CheckForm(checkfrom);//实例化
-
-$('#test').click(function(){
-	alert( check.okay() );// okay() 立即验证所有规则，所有规则正确返回 true 否则false
-});
-							</pre>
-						</div>
-						
 						<div>
-							<div>
-								<input type="text" id="testinput" />
-							</div>
-							<div class="mt-10">
-								<button id="test">Click here</button>
-							</div>
+							<ul class="exa-list">
+								<li><label for="email">邮箱：</label><input type="text" id="email"></li>
+								<li><label for="passworld">密码：</label><input type="text" id="password"></li>
+								<li><label for="passworld2">确认密码：</label><input type="text" id="password2"></li>
+								<li><label for="userName">姓名：</label><input type="text" id="userName"></li>
+								<li><label for="reg"></label><input type="button" value="立即注册" id="reg"></li>
+							</ul>
 						</div>
-						
-						
-						<h3>更多验证规则</h3>
-						<p>验证规则不仅仅局限于 输入类型 最大 最小，请看下面</p>
-						<div class="code">
-							<pre name="dlhl" class="js">
-type 的可选规则 int string float
-minValue 可选规则一个具体数值
-maxValue 可选规则一个具体数值
-minLength 一个具体数值
-maxLength 一个具体数值
-email 只能 true
-reg 一个正则表达式
-							</pre>
-						</div>
-						
+
 					</div>
                 </div>
             </div>
@@ -137,7 +97,40 @@ reg 一个正则表达式
 	});
 	
 </script>
+<script>
+							var json = [
+								{
+									id:"email",
+									email:{rule:true,msg:"请添加正确的邮箱格式"}
 
+								},
+								{
+									id:"password",
+									minLength:{rule:6,msg:"密码最少6位"},
+									maxLength:{rule:16,msg:"密码最长16位"}
+
+								},
+								{
+									id:"password2",
+									minLength:{rule:6,msg:"确认密码"},
+									maxLength:{rule:16,msg:"确认密码"}
+								},
+								{
+									id:"userName",
+									reg:{rule:/[a-zA-Z]{3,20}/,msg:"英文3-20个字符"}
+								}
+								
+							];
+							
+							var reg = new  CheckForm(json);
+							
+							$('#reg').click(function(){
+								if( reg.okay() ){
+									
+									alert("注册成功");
+								};
+							});
+						</script>
 <!--[if lte IE 7]>
 <script type="text/javascript">
 	Page.ie();
