@@ -17,7 +17,8 @@
 		dd:document.documentElement,
 		i:0, // 最外层DOM id 元素开始数
 		mix:function(r, s, a){
-			for(var i in s){
+			var i;
+			for( i in s){
 				if(s.hasOwnProperty(i)){
 					r[i] = s[i];
 				}
@@ -134,7 +135,7 @@
 			var self = this , config = self._config,
 				r, x, div, wrap = D.$("StipJun");
 				
-			r = config.rand = ++D.i
+			r = config.rand = ++D.i;
 			x = document.createElement("DIV");
 			x.id = config.prefix + r;
 			self.id = x.id;
@@ -151,7 +152,7 @@
 			};
 			
 			if(config.closeBtn){ // 有关闭按钮
-				var hide = function(){self.hide();}
+				var hide = function(){self.hide()};
 				D.$(config.closePrefix + r).onclick = hide;
 			}else{
 				D.$(config.closePrefix + r).style.display = "none";
