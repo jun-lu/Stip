@@ -70,17 +70,45 @@ $('#test').click(function(){
 						</div>
 						
 						
+						<h3>获取值</h3>
+						<p>使用getValues() 方法获取全部的值，也可以使用getValue()，传递一个ID 获取具体的某个值<p>
+						<pre name="dlhl" class="js">
+var rule = [
+	{
+		id:"abced",
+		maxLength:{rule:6,msg:"hello"}
+	}
+];
+var reg = new CheckForm(rule);
+
+var json = reg.getValues();//返回一个json数据格式，key是 id, 值是value
+/*
+	json = {
+		"abced":val
+	}
+*/
+
+var val = reg.getValue("abced");// 返回 abced 文本框的值
+						</pre>
+						
+						
 						<h3>更多验证规则</h3>
 						<p>验证规则不仅仅局限于 输入类型 最大 最小，请看下面</p>
 						<div class="code">
 							<pre name="dlhl" class="js">
-type 的可选规则 int string float
-minValue 可选规则一个具体数值
-maxValue 可选规则一个具体数值
-minLength 一个具体数值
-maxLength 一个具体数值
-email 只能 true
-reg 一个正则表达式
+[
+	{
+		id:"test",
+		type:{rule: 'int' | 'string' | 'float', msg:String}, //输入类型 
+		minValue:{rule:number, msg:String}, //最小值
+		maxValue:{rule:number, msg:String}, //最大值
+		minLength:{rule:number, msg:String}, // 最小长度
+		maxLength:{rule:number, msg:String}, //最大长度
+		email:{rule:true, msg:String}, //必须为Email
+		reg:{rule:RegExp, msg:String} //匹配一个正则表达式
+	}
+]							
+
 							</pre>
 						</div>
 						

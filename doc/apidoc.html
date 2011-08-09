@@ -38,11 +38,11 @@
 						
 						
 						<h3>Stip构造器参数</h3>
-						<p>Stip string | element</p>
+						<p>构造器可接受 一个element ID, 或者 element对象， 返回一个Stip实例</p>
 						<div class="code">
 							<pre name="dlhl" class="js">							
-Parameter String(element id)
-Parameter Element
+参数 String(element id)
+参数 Element
 return  Object
 	
 							</pre>
@@ -50,14 +50,14 @@ return  Object
 						
 						
 						<h3>.show</h3>
-						<p>显示提示</p>
+						<p>显示提示，无参数，字符串，函数，JSON格式数据</p>
 						<div class="code">
 							<pre name="dlhl" class="js">
-Parameter none //相当于传递了Funciont参数
+参数 none //提示内容会调用该元素上的 data-stip 属性值
 	-function(ele){return ele.getAttribute("data-stip");}							
-Parameter String //提示内容
-Parameter Function //返回值作为提示内容，默认接受 element参数
-Parameter JSON
+参数 String //提示内容
+参数 Function //返回值作为提示内容，默认接受 element参数
+参数 JSON //多数情况我们都是用这个参数
 	-json = {
 		content: String, // 默认 空
 		p:String //('left' | 'top' | 'right' | 'bottom'), 默认right
@@ -66,6 +66,7 @@ Parameter JSON
 		closeBtn:Boolean// 关闭按钮 默认 false
 		
 	}
+	
 return  false;
 	
 							</pre>
