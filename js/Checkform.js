@@ -10,7 +10,8 @@
 					return /^\w+$/.test(str);
 				},
 				isFloat:function(str){
-					return str ? String(parseFloat(str)) === str : false;//此方法需要重构
+					//return str ?  !isNaN(parseFloat(str)) : false;//此方法需要重构
+					return str ? /^\d+[.][\d]+$/.test(str) : false;
 				},
 				isEmail:function(str){
 					return /^[\w._\-]+@[\w_\-]+\.\w+$/.test(str);
