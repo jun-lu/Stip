@@ -43,12 +43,12 @@ Stip('test').show("hello World");
 						</div>
 						
 						<h3>关闭按钮</h3>
-						<p>参数为一个json数据格式，这里配置<em>内容</em>和<em>关闭按钮</em></p>
+						<p>JSON数据做为参数，这里配置<em>内容</em>和<em>关闭按钮</em></p>
 						<div class="code">
 							<pre  name="dlhl" class="js">
 Stip('test1').show({
-	content:"hello world",
-	closeBtn:true
+	content:"hello world",//提示类容
+	closeBtn:true //有关闭按钮
 });
 							</pre>
 						</div>
@@ -63,28 +63,28 @@ Stip('test1').show({
 Stip('test2').show({
 	content:"hello world",
 	closeBtn:true,
-	p:'left'
+	p:'left'//左
 });
 
 
 Stip('test3').show({
 	content:"hello world",
 	closeBtn:true,
-	p:'top'
+	p:'top'//上
 });
 
 
 Stip('test4').show({
 	content:"hello world",
 	closeBtn:true,
-	p:'bottom'
+	p:'bottom'//下
 });
 
 
 Stip('test5').show({
 	content:"hello world",
 	closeBtn:true,
-	p:'right'
+	p:'right'//右
 });
 
 							</pre>
@@ -101,14 +101,14 @@ Stip('test6').show({
 	content:"hello world",
 	closeBtn:true,
 	p:'top',
-	kind:'error'
+	kind:'error'//错误的样式
 });
 
 Stip('test7').show({
 	content:"hello world",
 	closeBtn:true,
 	p:'top',
-	kind:'ok'
+	kind:'ok'//正确的样式
 });
 							</pre>
 						</div>
@@ -122,7 +122,7 @@ Stip('test7').show({
 							<pre  name="dlhl" class="js">
 Stip('test8').show({
 	content:"hello world",
-	time:1000
+	time:1000 //单位毫秒
 });
 							</pre>
 						</div>
