@@ -90,8 +90,8 @@ var Page = {
 		{
 			title:"其他",
 			list:[
-				{href:'about.html',text:'关于', target:'_self'},
-				{href:'download.html',text:'下载', target:'_self'}
+				{href:'download.html',text:'下载', target:'_self'},
+				{href:'about.html',text:'关于', target:'_self'}
 			]
 		}
 	]

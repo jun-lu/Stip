@@ -83,11 +83,11 @@ return  false;
 						</div>
 						
 						<h3>配置更多提示样式</h3>
-						<p>如果你不太满意ok error这两种样式，你完全可以按照CSS中 ok的样式去修改。</p>
+						<p>Stip.css 配置更多提示样式，适应需求</p>
 						<div class="code">
 							<pre name="dlhl" class="css">
 
-/* ok css */
+/* 自带的 ok css */
 .lj-ok{color:#000; border:1px solid #2192D3; background:#F4FBFF;}
 .lj-ok .lj-top{border-top-color:#2192D3;}
 .lj-ok .lj-right{border-right-color:#2192D3;}
@@ -100,7 +100,7 @@ return  false;
 .lj-ok .lj-bottom .lj-span{border-bottom-color:#F4FBFF;}
 
 /* 依照 ok css 写一个xxoo的CSS*/
-/* xxoo CSS */
+/* 新的xxoo CSS */
 .lj-xxoo{color:#000; border:1px solid #f30; background:#000;}
 .lj-xxoo .lj-top{border-top-color:#f30;}
 .lj-xxoo .lj-right{border-right-color:#f30;}
@@ -120,7 +120,7 @@ return  false;
 							<pre name="dlhl" class="js">
 Stip('test').show({
 	content:'hello world',
-	kind:'xxoo'
+	kind:'xxoo' //新配置的xxoo样式
 })
 							</pre>
 						</div>
