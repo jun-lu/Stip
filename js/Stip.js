@@ -1,5 +1,5 @@
 /**
- * Stip JavaScript v3.0
+ * Stip JavaScript v4.1
  * http://www.cnblogs.com/idche/
  * 
  * 2011/01/21 14:39 lujun
@@ -8,6 +8,7 @@
  * 2011/08/01 
 			-修改一些变量名
 			-修改默认提示内容为 element 的 data-stip 属性内容
+ * 2011/09/02 添加了缓存机制，用于针对同一网页元素 不会同时弹出多个对话框。构造函数第二个参数可以设置是否启用缓存。本版本待定
  */
 ;;(function(win, namespace, undef){
 	var D = {
@@ -29,7 +30,8 @@
 						<div class=\"lj-content\"></div>\
 						<span class=\"lj-in lj-<%=p%>\"><span class=\"lj-in lj-span\"></span></span>\
 						<a href=\"javascript:void(0)\" id=\"ljClose<%=r%>\" class=\"lj-close\">x</a>\
-					</div>"
+					</div>",
+		cache:{}
 	};
 	
 	/* 可配置参数 */
@@ -48,21 +50,40 @@
 	};
 	/* 可配置参数 end */
 	
-	var TIP = function(id){
+	var TIP = function(id, isCache){
+	
 		if( !(this instanceof TIP)){
 			return new TIP(id);
-		}		
-		this.elem = id ? typeof id == "string" ? D.$(id) : id : this;
-		this.defaultConfig = D.mix({}, defaultConfig);
-		this._config = {};
-		this.clearTime = null;
-		this.func = null;
-		(D.db !== document.body) && this._init(); // 防止 D.db 对象加载失败
+		}
+		var isStringId = (typeof id == "string");
+		//this.elem = id ? isStringId ? D.$(id) : id : this;
+		this.elem = isStringId ? D.$(id) : id;
+		this.cacheKey = isStringId ? id : this.getCacheKey();
+		
+		var cache = D.cache[this.cacheKey];//检查缓存
+		if(cache && !isCache){
+			return cache;
+		}
+		D.cache[this.cacheKey] = this;
+		
+		this.defaultConfig = D.mix({}, defaultConfig);// 加载默认配置
+		this._config = {}; //配置
+		this.clearTime = null; // 显示时间
+		this.func = null;//更新位置回调函数
+		;(D.db !== document.body) && this._init(); // 防止 D.db 对象加载失败
 	};
 	
 	TIP.prototype = {
 		// 显示
 		constructor:TIP,
+		getCacheKey:function(){
+			var id = this.elem.getAttribute("id");
+			if( !id ){
+				id = "stip"+D.i;
+				this.elem.setAttribute("id", id);
+			}
+			return id;
+		},
 		show:function(json){
 			
 			var self = this, config = self._config,
@@ -196,6 +217,7 @@
 	
 	win[namespace] = TIP; // 声明命名空间
 	win[namespace]['config'] = defaultConfig; // 静态默认配置
+	win[namespace].cache = D.cache;
 	
 })(window, 'Stip');
 // 这里可以把Stip 改成你想要的命名空间
