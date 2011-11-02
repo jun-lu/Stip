@@ -8,7 +8,7 @@
 			req.url = "/index.html";
 		};
 		
-		var url = req.url.match(/(\w+)\.(\w+)/);
+		var url = req.url.match(/\/(.+)\.(\w+)$/);
 		var type = {
 			"html":{contentType:"text/html; charset=UTF-8", charSet:"UTF-8"},
 			"png":{contentType:"image/png", charSet:"utf-8"},
