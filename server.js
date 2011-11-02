@@ -4,6 +4,10 @@
 		//text/plain content text/html; charset=UTF-8
 		
 		//Jun.print(req);
+		if(req.url == "/"){
+			req.url = "/index.html";
+		};
+		
 		var url = req.url.match(/(\w+)\.(\w+)/);
 		var type = {
 			"html":{contentType:"text/html; charset=UTF-8", charSet:"UTF-8"},
@@ -12,10 +16,10 @@
 			"css":{contentType:"text/css;charset=UTF-8", charSet:"UTF-8"}		
 		};
 		
-		var fileName = url[0];
+		var fileName = req.url.replace("/", "");
 		var contentType = type[url[2]] ? type[url[2]].contentType : false;
 		var charSet = type[url[2]] ? type[url[2]].charSet : false;
-	
+		console.log(url);
 		if(contentType){
 			var fs = require('fs');
 			var data = fs.readFileSync(fileName, charSet);
