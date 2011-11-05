@@ -50,7 +50,7 @@
 		var url = req.url == "/" ? "/index.html" : req.url;
 		//console.log(url);
 		var urlmatch = url.match(/^\/([\w\/]+)(\.\w+)(?:\?|$)/);
-		//console.log(urlmatch);
+		console.log(urlmatch);
 		var type = {
 			    ".3gp"   : "video/3gpp"
 			  , ".a"     : "application/octet-stream"
