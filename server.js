@@ -7,7 +7,7 @@
 		var reqHttpFile = getURL(req);
 		
 		console.log(reqHttpFile);
-		console.log(reqHttpFile+"--------------------------------");	
+		console.log("--------------------------------");	
 		var fileName = reqHttpFile.file;
 		var contentType = reqHttpFile.mime;
 		var fs = require('fs');
@@ -49,8 +49,8 @@
 		//console.log(req.url);
 		var url = req.url == "/" ? "/index.html" : req.url;
 		//console.log(url);
-		var urlmatch = url.match(/^\/([\w\/]+)(\.\w+)(?:\?|$)/);
-		console.log(urlmatch);
+		var urlmatch = url.match(/^\/([\w\/\.\-]+)(\.\w+)(?:\?|$)/);
+		//console.log(urlmatch);
 		var type = {
 			    ".3gp"   : "video/3gpp"
 			  , ".a"     : "application/octet-stream"
