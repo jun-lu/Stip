@@ -17,8 +17,7 @@
 
 				data = fs.readFileSync(fileName, "utf-8");
 				res.writeHead(200, {
-					'Content-Type':contentType,
-					'Content-Length':data.length
+					'Content-Type':contentType
 				});	
 				res.end(data);			
 			}else if(contentType){
