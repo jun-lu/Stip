@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="zh" >
+<head>
+<meta charset="utf-8" />
+<title> Stip</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/admin.css"/>
+<link rel="stylesheet" href="css/ui.css" />
+<link rel="stylesheet" type="text/css" href="hl/style.css" media="all" />
+<!--载入Stip-->
+<link rel="stylesheet" href="../css/Stip.css" />
+<!--载入Stip-->
+</head>
+
+<body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
+
+<div id="doc" class="y-t1">
+	<div id="hd"><h1 id="H1">Stip</h1></div>
+    <div class="bd">
+    	<div class="bd-in clear">
+        	<div class="main">
+            	<div class="main-in">
+					<div id="content" class="main-content">
+					
+						
+						<h3>全局变量</h3>
+						<p>Stip,可以通过Stip.js最后一行修改全部变量</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+//代码最后一行							
+})(window, 'Stip'); //可以把 Stip 修改成任意你想要的命名空间
+							</pre>
+						</div>
+						
+						
+						
+						<h3>Stip构造器参数</h3>
+						<p>构造器可接受 一个element ID, 或者 element对象， 返回一个Stip实例</p>
+						<div class="code">
+							<pre name="dlhl" class="js">							
+参数 String(element id)
+参数 Element
+return  Object
+	
+							</pre>
+						</div>
+						
+						
+						<h3>.show</h3>
+						<p>显示提示，无参数，字符串，函数，JSON格式数据</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+参数 none //提示内容会调用该元素上的 data-stip 属性值
+	-function(ele){return ele.getAttribute("data-stip");}							
+参数 String //提示内容
+参数 Function //返回值作为提示内容，默认接受 element参数
+参数 JSON //多数情况我们都是用这个参数
+	-json = {
+		content: String, // 默认 空
+		p:String //('left' | 'top' | 'right' | 'bottom'), 默认right
+		kind:String //('ok' | 'error'), 默认 ok
+		time: Number// 显示时间(单位毫秒), 默认不关闭
+		closeBtn:Boolean// 关闭按钮 默认 false
+		
+	}
+	
+return  false;
+	
+							</pre>
+						</div>
+						
+						
+						
+						<h3>.hide</h3>
+						<p>关闭提示</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+//无参数，无返回值
+							</pre>
+						</div>
+						
+						<h3>配置更多提示样式</h3>
+						<p>Stip.css 配置更多提示样式，适应需求</p>
+						<div class="code">
+							<pre name="dlhl" class="css">
+
+/* 自带的 ok css */
+.lj-ok{color:#000; border:1px solid #2192D3; background:#F4FBFF;}
+.lj-ok .lj-top{border-top-color:#2192D3;}
+.lj-ok .lj-right{border-right-color:#2192D3;}
+.lj-ok .lj-left{border-left-color:#2192D3;}
+.lj-ok .lj-bottom{border-bottom-color:#2192D3;}
+
+.lj-ok .lj-top .lj-span{border-top-color:#F4FBFF;}
+.lj-ok .lj-right .lj-span{border-right-color:#F4FBFF;}
+.lj-ok .lj-left .lj-span{border-left-color:#F4FBFF;}
+.lj-ok .lj-bottom .lj-span{border-bottom-color:#F4FBFF;}
+
+/* 依照 ok css 写一个xxoo的CSS*/
+/* 新的xxoo CSS */
+.lj-xxoo{color:#000; border:1px solid #f30; background:#000;}
+.lj-xxoo .lj-top{border-top-color:#f30;}
+.lj-xxoo .lj-right{border-right-color:#f30;}
+.lj-xxoo .lj-left{border-left-color:#f30;}
+.lj-xxoo .lj-bottom{border-bottom-color:#f30;}
+
+.lj-xxoo .lj-top .lj-span{border-top-color:#000;}
+.lj-xxoo .lj-right .lj-span{border-right-color:#000;}
+.lj-xxoo .lj-left .lj-span{border-left-color:#000;}
+.lj-xxoo .lj-bottom .lj-span{border-bottom-color:#000;}
+
+//注意  border:1px solid #2192D3; border的颜色和lj-top,lj-right,lj-left,lj-bottom颜色一致
+//background:#F4FBFF; 颜色和 .lj-span的颜色保持一致
+
+							</pre>
+							<p>配置完成就可以这样调用了</p>
+							<pre name="dlhl" class="js">
+Stip('test').show({
+	content:'hello world',
+	kind:'xxoo' //新配置的xxoo样式
+})
+							</pre>
+						</div>
+						
+					</div>
+                </div>
+            </div>
+        	        	<div class="side">
+				<div class="side-nav" id="sideNav">
+					
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="fd">
+	
+		<div class="copyright">
+			<span id="copyRight">2011-08-01 by lujun</span>
+		</div>
+		
+	</div>
+</div>
+<script src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<script src="hl/highlight.js"></script>
+<script src="hl/lang-js.js"></script>
+<script src="hl/lang-xml.js"></script>
+<script src="hl/lang-html.js"></script>
+<script src="hl/lang-css.js"></script>
+<script src="hl/helpers.js"></script>
+<script>
+ Page.init();
+ DlHighlight.HELPERS.highlightByName('dlhl', "pre");
+</script>
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
+</body>
+</html>

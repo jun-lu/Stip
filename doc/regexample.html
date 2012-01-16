@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="zh" >
+<head>
+<meta charset="utf-8" />
+<title> Stip</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/admin.css"/>
+<link rel="stylesheet" href="css/ui.css" />
+<link rel="stylesheet" type="text/css" href="hl/style.css" media="all" />
+<!--载入Stip-->
+<link rel="stylesheet" href="../css/Stip.css" />
+<!--载入Stip-->
+</head>
+
+<body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
+<div id="doc" class="y-t1">
+	<div id="hd"><h1 id="H1">Stip</h1></div>
+    <div class="bd">
+    	<div class="bd-in clear">
+        	<div class="main">
+            	<div class="main-in">
+					<div id="content" class="main-content">
+					
+						
+						<h3>注册实例</h3>
+						<p>下面模拟一个用户注册的场景使用 checkform,Stip来制作</p>
+						<div class="code">
+						<div>-------html代码----------------------------------------------------------------------</div>
+						<pre name="dlhl" class="html">
+&lt;ul class=&quot;exa-list&quot;&gt;
+&lt;li&gt;&lt;label for=&quot;email&quot;&gt;邮箱：&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;email&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label for=&quot;passworld&quot;&gt;密码：&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;password&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label for=&quot;passworld2&quot;&gt;确认密码：&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;password2&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label for=&quot;userName&quot;&gt;姓名：&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;userName&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label for=&quot;reg&quot;&gt;&lt;/label&gt;&lt;input type=&quot;button&quot; value=&quot;立即注册&quot; id=&quot;reg&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;					
+
+</pre>
+						<div>-------js代码----------------------------------------------------------------------</div>
+							<pre name="dlhl" class="js">
+var json = [
+	{
+		id:"email",
+		email:{rule:true,msg:"请添加正确的邮箱格式"}
+
+	},
+	{
+		id:"password",
+		minLength:{rule:6,msg:"密码最少6位"},
+		maxLength:{rule:16,msg:"密码最长16位"}
+
+	},
+	{
+		id:"password2",
+		minLength:{rule:6,msg:"确认密码"},
+		maxLength:{rule:16,msg:"确认密码"}
+	},
+	{
+		id:"userName",
+		reg:{rule:/[a-zA-Z]{3,20}/,msg:"英文3-20个字符"}
+	}
+	
+];
+
+var reg = new  CheckForm(json);
+
+$('#reg').click(function(){
+	if( reg.okay() ){
+		if(reg.getValue("password") == reg.getValue("password2")){
+			//alert(reg.getValues()); 你可以在调试面板调用这个方法查看表单的所有值
+			alert("注册成功");
+		}else{
+			alert("两次密码不一致");
+		}
+	};
+});
+							</pre>
+						</div>
+						<div>-----效果-------------------------------------------------------------------------------------------------------------</div>
+						<div>
+							<ul class="exa-list">
+								<li><label for="email">邮箱：</label><input type="text" id="email"></li>
+								<li><label for="passworld">密码：</label><input type="text" id="password"></li>
+								<li><label for="passworld2">确认密码：</label><input type="text" id="password2"></li>
+								<li><label for="userName">姓名：</label><input type="text" id="userName"></li>
+								<li><label for="reg"></label><input type="button" value="立即注册" id="reg"></li>
+							</ul>
+						</div>
+
+					</div>
+                </div>
+            </div>
+        	<div class="side">
+				<div class="side-nav" id="sideNav">
+					
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="fd">
+	
+		<div class="copyright">
+			<span id="copyRight">2011-08-01 by lujun</span>
+		</div>
+		
+	</div>
+</div>
+<script src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<!--载入Stip-->
+<script src="../js/Stip.js"></script>
+<script src="../js/Checkform.js"></script>
+<!--载入Stip-->
+<script src="hl/highlight.js"></script>
+<script src="hl/lang-js.js"></script>
+<script src="hl/lang-xml.js"></script>
+<script src="hl/lang-html.js"></script>
+<script src="hl/lang-css.js"></script>
+<script src="hl/helpers.js"></script>
+<script>
+ Page.init();
+ DlHighlight.HELPERS.highlightByName('dlhl', "pre");
+</script>
+
+<script>
+	var checkfrom = [
+		{
+			id:"testinput",
+			type:{rule:"int", msg:"必须为数字"},
+			minValue:{rule:2, msg:"最小值为2"},
+			maxValue:{rule:10}
+		}
+	];
+	
+	var check = new CheckForm(checkfrom);
+	
+	$('#test').click(function(){
+		alert( check.okay() );
+	});
+	
+</script>
+<script>
+							var json = [
+								{
+									id:"email",
+									email:{rule:true,msg:"请添加正确的邮箱格式"}
+
+								},
+								{
+									id:"password",
+									minLength:{rule:6,msg:"密码最少6位"},
+									maxLength:{rule:16,msg:"密码最长16位"}
+
+								},
+								{
+									id:"password2",
+									minLength:{rule:6,msg:"确认密码"},
+									maxLength:{rule:16,msg:"确认密码"}
+								},
+								{
+									id:"userName",
+									reg:{rule:/[a-zA-Z]{3,20}/,msg:"英文3-20个字符"}
+								}
+								
+							];
+							
+							var reg = new  CheckForm(json);
+							
+							$('#reg').click(function(){
+								if( reg.okay() ){
+									if(reg.getValue("password") == reg.getValue("password2")){
+										//alert(reg.getValues()); 你可以在调试面板调用这个方法查看表单的所有值
+										alert("注册成功");
+									}else{
+										alert("两次密码不一致");
+									}
+								};
+							});
+						</script>
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title> Stip</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/admin.css"/>
+<link rel="stylesheet" href="css/ui.css" />
+<link rel="stylesheet" type="text/css" href="hl/style.css" media="all" />
+<!--载入Stip-->
+<link rel="stylesheet" href="../css/Stip.css" />
+<!--载入Stip-->
+</head>
+
+<body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
+
+<div id="doc" class="y-t1">
+	<div id="hd"><h1 id="H1">Stip</h1></div>
+    <div class="bd">
+    	<div class="bd-in clear">
+        	<div class="main">
+            	<div class="main-in">
+					<div id="content" class="main-content">
+					
+						<div>
+							<em>Stip</em> 适用于页面提示效果。兼容主流浏览器（ie,firefox,chrome,opera,Safari 等），不依赖其他框架，不使用图片（三角是用CSS做的）<br/>
+							
+						</div>
+						
+						<h3>Hello world</h3>
+						<p>参数是字符串，默认Stip没有关闭按钮。</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+Stip('test').show("hello World");	
+							</pre>
+						</div>
+						
+						<div>
+							<button id="test">Click here</button>
+						</div>
+						
+						<h3>关闭按钮</h3>
+						<p>JSON数据做为参数，这里配置<em>内容</em>和<em>关闭按钮</em></p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test1').show({
+	content:"hello world",//提示类容
+	closeBtn:true //有关闭按钮
+});
+							</pre>
+						</div>
+						<div>
+							<button id="test1">Click here</button>
+						</div>
+						
+						<h3>任意位置</h3>
+						<p>Stip 可以在4个方向弹出提示框，用参数p来配置</p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test2').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'left'//左
+});
+
+
+Stip('test3').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'top'//上
+});
+
+
+Stip('test4').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'bottom'//下
+});
+
+
+Stip('test5').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'right'//右
+});
+
+							</pre>
+						</div>
+						<div>
+							<button id="test2">Click here</button> <button id="test3">Click here</button> <button id="test4">Click here</button> <button id="test5">Click here</button>
+						</div>
+						
+						<h3>多样式</h3>
+						<p>默认为你提供了两种样式，可根据情况自己 <a href="#">定义更多样式</a></p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test6').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'top',
+	kind:'error'//错误的样式
+});
+
+Stip('test7').show({
+	content:"hello world",
+	closeBtn:true,
+	p:'top',
+	kind:'ok'//正确的样式
+});
+							</pre>
+						</div>
+						<div>
+							<button id="test6">Click here</button> <button id="test7">Click here</button>
+						</div>	
+
+						<h3>设定显示时间</h3>
+						<p>显示一秒，一秒以后自动清除</p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+Stip('test8').show({
+	content:"hello world",
+	time:1000 //单位毫秒
+});
+							</pre>
+						</div>
+
+						<div>
+							<button id="test8">Click here</button>
+						</div>							
+						
+						
+						<h3>把提示信息写在元素上</h3>
+						<p>.show方法默认是一个function,他会读取当前元素的 data-stip 属性 作为提示内容</p>
+						<div class="code">
+							<pre  name="dlhl" class="html">
+&lt;button id="test11" data-stip="从test11读取的提示内容"&gt;Click here&lt;/button&gt;
+							</pre>
+							<pre name="dlhl" class="js">
+Stip('test11').show();//.show没有参数							
+							</pre>
+						</div>
+						<div>
+							<button id="test11" data-stip="从test11读取的提示内容">Click here</button>
+						</div>	
+
+						<h3>参数是一个function</h3>
+						<p>.show 可以传递一个function,注意function的第一个参数将会接收到当前element，function返回值作为提示内容</p>
+						<div class="code">
+							<pre  name="dlhl" class="html">
+Stip('test12').show(function(ele){
+	return ele.getAttribute('stip');
+});
+							</pre>
+						</div>
+						<div>
+							<button id="test12" stip="定义在stip属性上">Click here</button>
+						</div>	
+						
+						
+						
+						
+						<h3>显示和隐藏</h3>
+						<p>用代码清除提示，先保存stip对象，调用它的show,和hide方法</p>
+						<div class="code">
+							<pre  name="dlhl" class="js">
+(function(){
+	var stip = null;
+	$('#test9').click(function(){
+		stip = Stip('test9');
+		stip.show({
+			content:"显示提示效果",
+			p:'left'
+		});
+	});
+	
+	
+	$('#test10').click(function(){
+		stip.hide();
+	});
+})();
+//上面使用了jquery  
+//也可以像下面这样
+var stip = Stip('test9');
+stip.show("显示提示效果"); //显示
+stip.hide();//隐藏
+	
+							</pre>
+						</div>
+						<div>
+							<button id="test9">显示</button>  <button id="test10">隐藏</button>
+						</div>	
+
+						
+						</div>
+                </div>
+            </div>
+        	<div class="side">
+				<div class="side-nav" id="sideNav">
+					<div class="nav-group">
+						<h2>Say hello</h2>
+						<ul>
+							<li><a href="index.html">Hello World</a></li>
+						</ul>
+					</div>
+					
+					<div class="nav-group">
+						<h2>API</h2>
+						<ul>
+							<li><a href="apishow.html">API演示</a></li>
+							<li><a href="apidoc.html">API文档</a></li>
+						</ul>
+					</div>
+					
+					<div class="nav-group">
+						<h2>其他</h2>
+						<ul>
+							<li><a href="about.html">关于</a></li>
+							<li><a href="download.html">下载</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="fd">
+	
+		<div class="copyright">
+			<span id="copyRight"></span>
+		</div>
+		
+	</div>
+</div>
+<script src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<!--载入Stip-->
+<script src="../js/Stip.js"></script>
+<!--载入Stip-->
+<script src="hl/highlight.js"></script>
+<script src="hl/lang-js.js"></script>
+<script src="hl/lang-xml.js"></script>
+<script src="hl/lang-html.js"></script>
+<script src="hl/lang-css.js"></script>
+<script src="hl/helpers.js"></script>
+<script>
+ Page.init();
+ DlHighlight.HELPERS.highlightByName('dlhl', "pre");
+</script>
+
+<script>
+	$('#test').click(function(){
+		Stip('test').show("Hello world");
+	});
+	
+	$('#test1').click(function(){
+		Stip('test1').show({
+			content:"hello world",
+			closeBtn:true
+		});
+	});
+	
+	$('#test2').click(function(){
+		Stip('test2').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'left'
+		});
+	});
+	
+	$('#test3').click(function(){
+		Stip('test3').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'top'
+		});
+	});
+	
+	$('#test4').click(function(){
+		Stip('test4').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'bottom'
+		});
+	});
+	
+	$('#test5').click(function(){
+		Stip('test5').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'right'
+		});
+	});
+	
+	$('#test6').click(function(){
+		Stip('test6').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'top',
+			kind:'error'
+		});
+	});
+	
+	$('#test7').click(function(){
+		Stip('test7').show({
+			content:"hello world",
+			closeBtn:true,
+			p:'top',
+			kind:'ok'
+		});
+	});	
+	
+	$('#test8').click(function(){
+		Stip('test8').show({
+			content:"hello world",
+			time:1000
+		});
+	});
+	
+	(function(){
+		var stip = null;
+		$('#test9').click(function(){
+			stip = Stip('test9');
+			stip.show({
+				content:"显示提示效果",
+				p:'left'
+			});
+		});
+		
+		
+		$('#test10').click(function(){
+			stip.hide();
+		});
+	})();
+	
+	
+	$('#test11').click(function(){
+		Stip('test11').show();
+	});
+	
+	$('#test12').click(function(){
+		Stip('test12').show(function(ele){
+			return ele.getAttribute('stip');
+		});
+	});
+</script>
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿<! doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/Stip.css" />
+		<style type="text/css">
+			body{font-size:12px;}
+		</style>
+		<script tepe="text/javascript" src="js/Stip.js"></script>
+		<script tepe="text/javascript" src="js/check.js"></script>
+		
+	</head>
+	<body>
+		<input type="text" id="number1" name="input1"><br/>
+		<input type="text" id="number2" name="input2"><br/>
+		<input type="text" id="number3" name="input3"><br/>
+		<input type="text" id="number4" name="input4"><br/>
+		<input type="text" id="number5" name="input5"><br/>
+		<input type="text" id="number6" name="input6"><br/>
+		<input type="text" id="number7" name="input7"><br/>
+	<script type="text/javascript">
+		// {
+			// id:"abc",
+			// rules:[
+				// must:true,
+				// type:"int | float | String | email | en | all",
+				// minValue:Number,
+				// maxValue:Number,
+				// minLength:Number,
+				// maxLength:Number,
+				// regExp:
+			// ]
+		// }
+		/*
+		var inputs = {
+			id:"number1",
+			rules:{
+				id:"1",
+				must:true,
+				type:{rule:"int", msg:""},
+				minValue:{rule:2, msg:""},
+				maxValue:{rule:10, msg:""}
+			}
+		}
+		*/
+		
+		//****************
+		
+		var a = [
+			{
+				id:"number1",
+				type:{rule:"int", msg:"你应该填写点什么东西"},
+				minValue:{rule:2},
+				maxValue:{rule:10}
+			},
+			{
+				id:"number2",
+				type:{rule:"string", msg:"111111111111"},
+				minLength:{rule:2, msg:""},
+				maxLength:{rule:10, msg:""}
+			},
+			{
+				id:"number3",
+				minValue:{rule:10},
+				maxValue:{rule:20}
+			},
+			{
+				id:"number4",
+				email:{rule:true},
+			}
+		]
+		var c = new CheckForm(a);		
+	</script>
+
+		这东东是用来验证表单提交的
+		<br/>
+		<input type="button" value="验证" onclick="c.okay();">
+	</body> 
+</html>

@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="zh" >
+<head>
+<meta charset="utf-8" />
+<title> Stip</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/admin.css"/>
+<link rel="stylesheet" href="css/ui.css" />
+<link rel="stylesheet" type="text/css" href="hl/style.css" media="all" />
+<!--载入Stip-->
+<link rel="stylesheet" href="../css/Stip.css" />
+<!--载入Stip-->
+</head>
+
+<body>
+<noscript>
+	<div class="noscript">未开启JavaScript，可能无法完成部分功能</div>
+</noscript>
+<div id="doc" class="y-t1">
+	<div id="hd"><h1 id="H1">Stip</h1></div>
+    <div class="bd">
+    	<div class="bd-in clear">
+        	<div class="main">
+            	<div class="main-in">
+					<div id="content" class="main-content">
+					
+						<div>
+							<em>CheckForm</em> 是基于Stip的表单验证提示插件。
+						</div>
+						<h3>如何使用</h3>
+						<p>在页面引入 stip.css, stip.js, checkform.js 3个文件即可</p>
+						<div class="code">
+							<pre name="dlhl" class="html">
+&lt;link rel="stylesheet" href="css/Stip.css" /&gt;
+&lt;script src="js/Stip.js"&gt;&lt;/script&gt;
+&lt;script src="js/checkform.js"&gt;&lt;/script&gt;
+							</pre>
+						</div>
+						
+						
+						
+						<h3>验证一个input</h3>
+						<p>okay 方法返回一个布尔值，表示当前是否验证通过全部规则</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+var checkfrom = [ //配置验证规则
+	{
+		id:"testinput", // input id
+		type:{rule:"int", msg:"必须为数字"}, //类型必须是int 错误提示msg
+		minValue:{rule:2, msg:"最小值为2"}, //最小值 2 错误提示msg
+		maxValue:{rule:10}//最大值 错误提示 checkform自带
+	}
+];
+	
+var check = new CheckForm(checkfrom);//实例化
+
+$('#test').click(function(){
+	alert( check.okay() );// okay() 立即验证所有规则，所有规则正确返回 true 否则false
+});
+							</pre>
+						</div>
+						
+						<div>
+							<div>
+								<input type="text" id="testinput" />
+							</div>
+							<div class="mt-10">
+								<button id="test">Click here</button>
+							</div>
+						</div>
+						
+						
+						<h3>获取值</h3>
+						<p>使用getValues() 方法获取全部的值，也可以使用getValue()，传递一个ID 获取具体的某个值<p>
+						<pre name="dlhl" class="js">
+var rule = [
+	{
+		id:"abced",
+		maxLength:{rule:6,msg:"hello"}
+	}
+];
+var reg = new CheckForm(rule);
+
+var json = reg.getValues();//返回一个json数据格式，key是 id, 值是value
+/*
+	json = {
+		"abced":val
+	}
+*/
+
+var val = reg.getValue("abced");// 返回 abced 文本框的值
+						</pre>
+						
+						
+						<h3>更多验证规则</h3>
+						<p>验证规则不仅仅局限于 输入类型 最大 最小，请看下面</p>
+						<div class="code">
+							<pre name="dlhl" class="js">
+[
+	{
+		id:"test",
+		type:{rule: 'int' | 'string' | 'float', msg:String}, //输入类型 
+		minValue:{rule:number, msg:String}, //最小值
+		maxValue:{rule:number, msg:String}, //最大值
+		minLength:{rule:number, msg:String}, // 最小长度
+		maxLength:{rule:number, msg:String}, //最大长度
+		email:{rule:true, msg:String}, //必须为Email
+		reg:{rule:RegExp, msg:String} //匹配一个正则表达式
+	}
+]							
+
+							</pre>
+						</div>
+						
+					</div>
+                </div>
+            </div>
+        	<div class="side">
+				<div class="side-nav" id="sideNav">
+					
+				</div>
+			</div>
+        </div>
+    </div>
+    <div class="fd">
+	
+		<div class="copyright">
+			<span id="copyRight">2011-08-01 by lujun</span>
+		</div>
+		
+	</div>
+</div>
+<script src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<!--载入Stip-->
+<script src="../js/Stip.js"></script>
+<script src="../js/Checkform.js"></script>
+<!--载入Stip-->
+<script src="hl/highlight.js"></script>
+<script src="hl/lang-js.js"></script>
+<script src="hl/lang-xml.js"></script>
+<script src="hl/lang-html.js"></script>
+<script src="hl/lang-css.js"></script>
+<script src="hl/helpers.js"></script>
+<script>
+ Page.init();
+ DlHighlight.HELPERS.highlightByName('dlhl', "pre");
+</script>
+
+<script>
+	var checkfrom = [
+		{
+			id:"testinput",
+			type:{rule:"int", msg:"必须为数字"},
+			minValue:{rule:2, msg:"最小值为2"},
+			maxValue:{rule:10}
+		}
+	];
+	
+	var check = new CheckForm(checkfrom);
+	
+	$('#test').click(function(){
+		alert( check.okay() );
+	});
+	
+</script>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+	Page.ie();
+</script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿
+/* ui */
+a:link{color:#36C;text-decoration:none;}
+a:visited{}
+a:hover{text-decoration:underline;}
+a:active{color:#DD4B39;}
+.mt-10{margin-top:10px;}
+.ml-10{margin-left:10px;}
+
+
+button,input[type=submit],input[type=button]{
+	margin:0;
+	padding:0.3em 1em;border:1px solid #AAA;
+	border-radius:2px;/*标准*/
+	-webkit-border-radius:2px;/*chrome Safari*/
+	-moz-border-radius:2px;/*firefox*/
+	-o-border-radius:2px;/*opear*/
+	box-shadow:0 1px 3px rgba(0,0,0,0.1);
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.1);
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,0.1);
+	-o-box-shadow:0 1px 3px rgba(0,0,0,0.1);
+	background:-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background:-moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background:-o-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background:linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	cursor:pointer;
+}
+button:hover,input[type=submit]:hover,input[type=button]:hover{
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,0.2);
+	-o-box-shadow:0 1px 3px rgba(0,0,0,0.2);
+	box-shadow:0 1px 3px rgba(0,0,0,0.2);
+	background:-webkit-linear-gradient(#fff, #F4F4F4 40%, #E5E5E5);
+	background:-moz-linear-gradient(#fff, #F4F4F4 40%, #E5E5E5);
+	background:-o-linear-gradient(#fff, #F4F4F4 40%, #E5E5E5);
+	background:linear-gradient(#fff, #F4F4F4 40%, #E5E5E5);
+}
+button:active,input[type=submit]:active,input[type=button]:active{
+	-webkit-box-shadow:inset 0 1px 3px rgba(0,0,0,0.2);
+	-moz-box-shadow:inset 0 1px 3px rgba(0,0,0,0.2);
+	-o-box-shadow:inset 0 1px 3px rgba(0,0,0,0.2);
+	box-shadow:inset 0 1px 3px rgba(0,0,0,0.2);
+	background:-webkit-linear-gradient(#F4F4F4, #E3E2E2 40%, #DBDBDB);
+	background:-moz-linear-gradient(#F4F4F4, #E3E2E2 40%, #DBDBDB);
+	background:-o-linear-gradient(#F4F4F4, #E3E2E2 40%, #DBDBDB);
+	background:linear-gradient(#F4F4F4, #E3E2E2 40%, #DBDBDB);
+}
+button[disable],input[disable],input[disable]{
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	-o-box-shadow:none;
+	box-shadow:none;
+	background:-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background:-moz-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background:-o-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background:linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	border-color:#AAA;
+	color:#AAA;
+	cursor:auto;
+}
+
+input[type=text]{
+	border:1px solid #ccc;padding:.3em ;
+}
+
+
+/*页面*/
+
+h1{text-shadow:#fff 1px 1px; font-size:18px;margin:5px 0 0 20px;}
+
+.noscript{border: 1px solid #FEBF90;background-color:#FFFBE1;display:block;padding:10px;}
+.main-content{margin:20px;}
+.main-in{border-left:1px solid #ccc;}
+.y-t1 .side{border-right: 1px solid #CCC;margin-right: -1px;}
+.side-nav{padding-bottom:50px;}
+.nav-group{padding-top:10px;padding-left:40px;}
+.nav-group a{display:block;padding:0.5em 2em;}
+.nav-group a:hover{background:#F1F1F1;}
+.nav-group h2{padding:1em 0 1em 1em;font-size:16px;color:#DD4B39;}
+
+.copyright{color:#666;margin:5px 0 0 20px;}
+
+
+/* 代码区块 */
+.code{margin:10px 0;}
+.code pre{white-space:pre;}
+.code-info{font-weight:700;font-size:16px;padding:0.5em 0;}
+
+/* 内容区块 */
+h3{font-size:18px;margin-top:40px;font-weight:700;}
+.main-content em{color:#DD4B39;}
+.main-content p{text-indent:1em;line-height:1.5em;margin:10px 0;}
+
+/**/
+
+.exa-list li{margin-bottom:10px;}
+.exa-list label{width:100px;text-align:right; display:inline-block;}
