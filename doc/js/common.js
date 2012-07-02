@@ -64,7 +64,7 @@ var Page = {
 		$(id || '#H1').text('Stip');
 	},
 	ie:function(){
-		$('#doc').css('fontSize','24pt').html('我应该说服你放弃它吗？');
+		//$('#doc').css('fontSize','24pt').html('我应该说服你放弃它吗？');
 	},
 	nav:[
 		{
