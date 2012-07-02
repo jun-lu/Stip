@@ -10,7 +10,9 @@
 .lj-stip{background:#F4FBFF;line-height:1.5em;padding:5px 15px;border:1px solid #2192D3;position:absolute;text-align:left;}
 .lj-in{position:absolute;zoom:1;border:10px dashed transparent;width:0px;height:0px;}
 .lj-in .lj-span{zoom:1;width:0px;height:0px;overflow:hidden;}
-.lj-close{position:absolute;text-decoration:none;color:#000;font-size:14px;zoom:1;text-indent:1px;height:9px; width:9px; overflow:hidden;line-height:0.5em; right:0; top:0;}
+.lj-close{position:absolute;text-decoration:none;color:#000;font-size:13px;zoom:1;text-indent:1px;height:9px; width:9px; overflow:hidden;line-height:6px;right:0;top:0;
+	line-height:-12px;
+}
 .lj-close:hover{color:#39F;}
 .lj-content{}
 .lj-top{border-top:10px solid #2192D3;bottom:-20px; left:3px;}
