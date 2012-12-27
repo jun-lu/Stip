@@ -53,6 +53,7 @@
 				constructor:Check,
 				init:function(rule){
 					var newRule = {};
+                                        var _this = this;
 					this.id = rule.id;
 					this.input = tool.$(rule.id);
 					
@@ -70,7 +71,9 @@
 							}
 						}
 					};
-					
+					this.input.onblur = function(){
+                                                _this.okay();        
+                                        }
 					this.rule = newRule;
 					
 				},
